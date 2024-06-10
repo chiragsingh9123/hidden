@@ -126,7 +126,7 @@ def send_welcome(message):
         
     else:
        name = message.from_user.first_name
-       bot.send_message(message.from_user.id, f"*Sorry {name} ,you are banned from using this service.\nContact @Peytas for more info.*",parse_mode='markdown')
+       bot.send_message(message.from_user.id, f"*Sorry {name} ,you are banned from using this service.\nContact @shadow_hiddenx for more info.*",parse_mode='markdown')
   
   elif (row)== None:
 
@@ -1843,9 +1843,9 @@ def handle_callback(message):
     elif message.data == '/voice':
         Voices(message)
     elif message.data == '/help':
-        bot.send_message(message.from_user.id,"Contact @Peytas For Any Help 🎭")
+        bot.send_message(message.from_user.id,"Contact @shadow_hiddenx For Any Help 🎭")
     elif message.data == '/buy':
-        bot.send_message(message.from_user.id,"Purchase from  @Peytas")
+        bot.send_message(message.from_user.id,"Purchase from  @shadow_hiddenx")
     elif message.data == '/voiceback':
         Voices(message)
     elif message.data == '/community':
