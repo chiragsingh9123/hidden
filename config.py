@@ -31,8 +31,8 @@ c = db.cursor()
 def gen_key():
     letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
     numbers= '1234567890'
-    passw=letters+numbers
-    result_str = ''.join(random.choice(passw) for i in range(20))
+    passw=letters+numbers+"_SOURCE_OTP"
+    result_str = ''.join(random.choice(passw) for i in range(15))
     return result_str
 
 def put_user_key(days):
