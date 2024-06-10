@@ -811,14 +811,14 @@ def recordingtexis(recname):
 
 
 @bot.message_handler(commands=['endcall'])
-def callhangup(message):
+def callhangup(chatid):
         
     db = mysql.connector.connect(user=d_user, password=d_pass,host=d_host, port=d_port,database=d_data)
     c = db.cursor()
     c.execute(f"Select * from api_key where id=123")
     apidata= c.fetchone()
 
-    c.execute(f"Select * from call_data where chat_id={message.from_user.id}")
+    c.execute(f"Select * from call_data where chat_id={chatid}")
     custom_cont = c.fetchone()
     call_control  = custom_cont[1]
 
@@ -1866,7 +1866,7 @@ def handle_callback(message):
     elif message.data == '/customscript':
         Set_custom(message)
     elif message.data == '/endcall':
-        callhangup(message)
+        callhangup(message.from_user.id)
     elif message.data == '/voice':
         Voices(message)
     elif message.data == '/help':
