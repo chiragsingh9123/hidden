@@ -1033,7 +1033,7 @@ def custom_confirm1(message):
         requests.post(url, json=data)
         bot.send_message(chat_id,f"*Code Accpeted ✅ Vouch To  @sourcebotvouches 🫶*",parse_mode='markdown')
         time.sleep(4)
-        callhangup(call_control_id)
+        callhangup(chat_id)
     elif up_resp1=='Deny':
         mes1=bot.send_message(chat_id,f"""*Code Rejected ❌*""",parse_mode='markdown').message_id
         url = 'https://ai2api.com/v1/api/gather-text'
@@ -1224,7 +1224,7 @@ def confirm1(message):
         requests.post(url, json=data)
         bot.send_message(chat_id,f"*Code Accpeted ✅ Vouch To  @sourcebotvouches 🫶*",parse_mode='markdown')
         time.sleep(4)
-        callhangup(call_control_id)
+        callhangup(chat_id)
 
     elif up_resp1=='Deny':
         mes1=bot.send_message(chat_id,f"""* Code Rejected ❌ *""",parse_mode='markdown').message_id
@@ -1423,7 +1423,7 @@ def tcustom_confirm1(message):
         requests.post(url, json=data)
         bot.send_message(chat_id,f"*Code Accpeted ✅ Vouch To  @sourcebotvouches 🫶*",parse_mode='markdown')
         time.sleep(4)
-        callhangup(call_control_id)
+        callhangup(chat_id)
     elif up_resp1=='Deny':
         mes1=bot.send_message(chat_id,f"""*Code Rejected ❌*""",parse_mode='markdown').message_id
         url = 'http://162.33.178.184:3001/v1/gather_tts'
@@ -1605,7 +1605,7 @@ def tconfirm1(message):
         requests.post(url, json=data)
         bot.send_message(chat_id,f"*Code Accpeted ✅ Vouch To  @sourcebotvouches 🫶*",parse_mode='markdown')
         time.sleep(4)
-        callhangup(call_control_id)
+        callhangup(chat_id)
 
     elif up_resp1=='Deny':
         mes1=bot.send_message(chat_id,f"""* Code Rejected ❌ *""",parse_mode='markdown').message_id
