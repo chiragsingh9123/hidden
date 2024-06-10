@@ -31,9 +31,9 @@ c = db.cursor()
 def gen_key():
     letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
     numbers= '1234567890'
-    passw=letters+numbers+"_SOURCE_OTP"
+    passw=letters+numbers
     result_str = ''.join(random.choice(passw) for i in range(15))
-    return result_str
+    return result_str+"_SOURCE_OTP"
 
 def put_user_key(days):
    db = mysql.connector.connect(user=d_user, password=d_pass,host=d_host, port=d_port,database=d_data)
