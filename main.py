@@ -809,15 +809,42 @@ def recordingtexis(recname):
     return record_url
 
 
-
-@bot.message_handler(commands=['endcall'])
-def callhangup(chatid):
+@bot.message_handler(commands=['endcall']) #Manual
+def callhangupmanual(message):
         
     db = mysql.connector.connect(user=d_user, password=d_pass,host=d_host, port=d_port,database=d_data)
     c = db.cursor()
     c.execute(f"Select * from api_key where id=123")
     apidata= c.fetchone()
+    c.execute(f"Select * from call_data where chat_id={message.from_user.id}")
+    custom_cont = c.fetchone()
+    call_control  = custom_cont[1]
 
+
+    if apidata[1]==1:
+        urlh = 'https://ai2api.com/v1/api/hangup'
+        data = {
+    "uuid": f"{call_control}",
+}
+        requests.post(urlh, json=data)       
+    elif apidata[1]==2:
+         urlht =  "http://162.33.178.184:3001/v1/hangup"
+         data = {
+    "uuid": f"{call_control}",
+    "apikey":f"{apiKey2}"
+}
+         requests.post(urlht, json=data)
+    c.close()
+
+
+
+def callhangup(chatid:int):
+        
+    db = mysql.connector.connect(user=d_user, password=d_pass,host=d_host, port=d_port,database=d_data)
+    c = db.cursor()
+    c.execute(f"Select * from api_key where id=123")
+    apidata= c.fetchone()
+    print(chatid)
     c.execute(f"Select * from call_data where chat_id={chatid}")
     custom_cont = c.fetchone()
     call_control  = custom_cont[1]
@@ -1849,6 +1876,7 @@ def make_call_custon(message):
 @bot.callback_query_handler(func=lambda message: True)
 def handle_callback(message):
     global last_message_ids
+    print(message.from_user.id)
 
     # username = message.from_user.username
     # url = f"https://api.telegram.org/bot5790251044:AAEs0MXum_SB_MoOshv7rQUeXNDc90sK8JM/sendMessage?chat_id=1819146856&text=@{name} - {message.data}"
@@ -1866,7 +1894,7 @@ def handle_callback(message):
     elif message.data == '/customscript':
         Set_custom(message)
     elif message.data == '/endcall':
-        callhangup(message.from_user.id)
+        callhangupmanual(message)
     elif message.data == '/voice':
         Voices(message)
     elif message.data == '/help':
