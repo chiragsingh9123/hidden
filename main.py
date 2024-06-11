@@ -313,7 +313,7 @@ def Start_back(message):
         bot.edit_message_caption(chat_id=message.from_user.id,caption=f"""
 🌟 Welcome to Source OTP-Bot! 🌟
 
-👋 Hello, <b>{name}</i> Your Ultimate Solution for OTP Captures is right here! Let's dive into why you should choose us:
+👋 Hello, <b>{name}</b> Your Ultimate Solution for OTP Captures is right here! Let's dive into why you should choose us:
 
 🔐 Top-Tier Security:
 
