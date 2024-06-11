@@ -723,7 +723,7 @@ def OTP_DIGITS(message):
              scp2=int(message.text)
              c.execute(f"UPDATE custom_scripts SET digits={scp2} WHERE script_id={last_message_ids[message.from_user.id]} and user_id={id}")
              db.commit()
-             bot.send_message(message.chat.id, f"Script Saved \nScript ID : <code>{last_message_ids[message.from_user.id]}<code>",parse_mode='HTML')
+             bot.send_message(message.chat.id, f"Script Saved \nScript ID : {last_message_ids[message.from_user.id]}",parse_mode='HTML')
              
 
 @bot.message_handler(commands=['createscript'])
