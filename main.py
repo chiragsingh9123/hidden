@@ -401,7 +401,7 @@ def Features(message):
         keyboard = types.InlineKeyboardMarkup(row_width=1)
         keyboard.add(item1)
         bot.edit_message_caption(f"""
-🚀 <i></b>Source OTP Bot:</i></b> Your Supreme Two-Factor Authentication & OTP Service 
+🚀 <b><i>Source OTP Bot:</i></b> Your Supreme Two-Factor Authentication & OTP Service 
 
 <b>Here is our feature list:</b>
 
