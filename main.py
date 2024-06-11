@@ -110,7 +110,7 @@ def send_welcome(message):
         
         name = message.from_user.first_name
         keyboard = types.InlineKeyboardMarkup(row_width=2)
-        item3 = types.InlineKeyboardButton(text="Voices 🔊", callback_data="/voice")
+        item3 = types.InlineKeyboardButton(text="Voices 🎚️", callback_data="/voice")
         item4= types.InlineKeyboardButton(text="Commands 🪟 ", callback_data="/commands")
         item7 = types.InlineKeyboardButton(text="Features🎖️ ", callback_data="/features")
         item6 = types.InlineKeyboardButton(text="Support 🆘", callback_data="/support")
@@ -133,11 +133,11 @@ def send_welcome(message):
     name = message.from_user.first_name
     keyboard = types.InlineKeyboardMarkup(row_width=2)
     
-    item1 = types.InlineKeyboardButton(text="Purchase Token💵", callback_data="/price")
-    item2 = types.InlineKeyboardButton(text="Redeem  Token🔑", callback_data="/redeem")
+    item1 = types.InlineKeyboardButton(text="Purchase Token🧧", callback_data="/price")
+    item2 = types.InlineKeyboardButton(text="Redeem  Token🎟️", callback_data="/redeem")
     item3 = types.InlineKeyboardButton(text="Community 💬 ", callback_data="/community")
     item4= types.InlineKeyboardButton(text="Commands 🪟 ", callback_data="/commands")
-    item5 = types.InlineKeyboardButton(text="Voices 🔊", callback_data="/voice")
+    item5 = types.InlineKeyboardButton(text="Voices 🎚️", callback_data="/voice")
     item7 = types.InlineKeyboardButton(text="Features🎖️ ", callback_data="/features")
     item6 = types.InlineKeyboardButton(text="Support 🆘", callback_data="/support")
     item8 = types.InlineKeyboardButton(text="Policy 🔐", callback_data="/privacy")
@@ -189,23 +189,23 @@ def Price_list(message):
         keyboard.add(item1)
         bot.edit_message_caption(f"""
 1.   <b>Basic Plan:</b>
-   • 💵 Price: 24 USD
-   • 💹 Value: 2,000 INR
+   • 🧧 Price: 24 USD
+   • 💹 Value: 2,160 INR
    • 🗓 Validity: 1 Day
 
 2.   <b>Standard Plan:</b>
-   • 💵 Price: 55 USD
-   • 💹 Value: 4,500 INR
+   • 🧧 Price: 55 USD
+   • 💹 Value: 4,950 INR
    • 🗓 Validity: 3 Days
 
 3.   <b>Premium Plan:</b>
-   • 💵 Price: 100 USD
-   • 💹 Value: 8,300 INR
+   • 🧧 Price: 100 USD
+   • 💹 Value: 9000 INR
    • 🗓 Validity: 7 Days
 
 4.  <b>Ultimate Plan:</b>
-   • 💵 Price: 260 USD
-   • 💹 Value: 22,000 INR
+   • 🧧 Price: 260 USD
+   • 💹 Value: 27,900 INR
    • 🗓 Validity: 30 Days
 
 <i>Contact @Shadow_hiddenx to purchase your token 🎟️</i>
@@ -237,7 +237,7 @@ def Commands(message):
 /profile - Check Your Profile👤
 /purchase - Buy key 🗝️
 /redeem - Redeem your Key 🔐
-/price - Check current Price 💵
+/price - Check current Price 🧧
 
 <b><i>🧑‍💻 Calling Commands: ⬇️</i></b>
 
@@ -297,11 +297,11 @@ def Start_back(message):
         global last_message_ids
         name = message.from_user.first_name
         keyboard = types.InlineKeyboardMarkup(row_width=2)
-        item1 = types.InlineKeyboardButton(text="Purchase Token 💵", callback_data="/price")
-        item2 = types.InlineKeyboardButton(text="Redeem  Token 🔑", callback_data="/redeem")
+        item1 = types.InlineKeyboardButton(text="Purchase Token 🧧", callback_data="/price")
+        item2 = types.InlineKeyboardButton(text="Redeem  Token 🎟️", callback_data="/redeem")
         item3 = types.InlineKeyboardButton(text="Community 💬 ", callback_data="/community")
         item4= types.InlineKeyboardButton(text="Commands 🪟 ", callback_data="/commands")
-        item5 = types.InlineKeyboardButton(text="Voices 🔊", callback_data="/voice")
+        item5 = types.InlineKeyboardButton(text="Voices 🎚️", callback_data="/voice")
         item7 = types.InlineKeyboardButton(text="Features🎖️ ", callback_data="/features")
         item6 = types.InlineKeyboardButton(text="Support 🆘", callback_data="/support")
         item8 = types.InlineKeyboardButton(text="Policy 🔐", callback_data="/privacy")
@@ -372,7 +372,7 @@ def activatedstartback(message):
         name = message.from_user.first_name
         keyboard = types.InlineKeyboardMarkup(row_width=2)
         
-        item3 = types.InlineKeyboardButton(text="Voices 🔊", callback_data="/voice")
+        item3 = types.InlineKeyboardButton(text="Voices 🎚️", callback_data="/voice")
         item4= types.InlineKeyboardButton(text="Commands 🪟 ", callback_data="/commands")
         item7 = types.InlineKeyboardButton(text="Features🎖️ ", callback_data="/features")
         item6 = types.InlineKeyboardButton(text="Support 🆘", callback_data="/support")
