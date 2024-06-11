@@ -1121,7 +1121,7 @@ def custom_prebuild_script_call(script_id,chatid):
         if userid in user_timers:
             user_timers[userid].cancel()
             print("Timer Reseted",userid)
-        start_disconnect_timer()
+        start_disconnect_timer(userid)
 
 
   
