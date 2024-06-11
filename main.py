@@ -571,7 +571,7 @@ Otp count:- {cdata[9]} 📞*""",parse_mode='markdown',reply_markup=keyboard)
 #-------------------------------------------Redeem --------------------------------------------------------------------------------
 @bot.message_handler(commands=['redeem'])
 def redeem_user(message):
-    send = bot.send_message(message.from_user.id, "*- - -Send your Key - - -*",parse_mode='markdown')
+    send = bot.send_message(message.from_user.id, "*- - -Send your Token - - -*",parse_mode='markdown')
     bot.register_next_step_handler(send,redeem_done) 
 
 def redeem_done(message):
@@ -589,18 +589,18 @@ def redeem_done(message):
             if uresp==1:
                 days=user_day_check(id)
             elif uresp==0:
-                bot.send_message(message.from_user.id, f"*Invalid Redeem Code*",parse_mode='markdown')
+                bot.send_message(message.from_user.id, f"*Invalid Token*",parse_mode='markdown')
         elif user_day_check(id)>0:
-            bot.send_message(message.from_user.id, f"*An Activation Key is Already Activated*",parse_mode='markdown')
+            bot.send_message(message.from_user.id, f"*An Activation Token is Already Activated*",parse_mode='markdown')
     elif dat==None:
         uresp=redeem_key(reedem_code,id)
         if uresp==1:
             time.sleep(3)
             days=user_day_check(id)
-            bot.send_message(message.from_user.id, f"*Key redeemed successfully✅*",parse_mode='markdown')
+            bot.send_message(message.from_user.id, f"*Token redeemed successfully✅*",parse_mode='markdown')
             send_welcome(message)
         elif uresp==0:
-            bot.send_message(message.from_user.id, f"*Invalid Key*",parse_mode='markdown')
+            bot.send_message(message.from_user.id, f"*Invalid Token*",parse_mode='markdown')
     c.close()
 #--------------------------------------------------------------------------------------------------------------------------- 
     
