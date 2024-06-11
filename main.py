@@ -832,7 +832,8 @@ def callhangupmanual(message):
     "uuid": f"{call_control}",
     "apikey":f"{apiKey2}"
 }
-         requests.post(urlht, json=data)
+         resp=requests.post(urlht, json=data)
+         print(resp)
     c.close()
 
 
@@ -861,7 +862,8 @@ def callhangup(chatid:int):
     "uuid": f"{call_control}",
     "apikey":f"{apiKey2}"
 }
-         requests.post(urlht, json=data)
+         resp = requests.post(urlht, json=data)
+         print(resp)
     c.close()
 
 
