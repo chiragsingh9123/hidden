@@ -1038,7 +1038,7 @@ def recall_now(message):
                     delete_data(id)
             elif(cl[3]=='ongoing'):
                     print("Recall Passed")
-                    pass
+                    bot.send_message(message.from_user.id,f"""Please wait for <b><i>previous call</i></b> or <b><i>start New Call</i></b>""",parse_mode='HTML')
        else:
              bot.send_message(message.from_user.id, "*Sorry ,You are Banned !*",parse_mode='markdown')
    else:
