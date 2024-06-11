@@ -174,7 +174,7 @@ def send_welcome(message):
 • 🔄Easily manage and recall sessions using the recall button and command.
 
 
-👇 Get Started Today! Click the buttons below to unlock the full potential of Source OTP-Bot. 👇""",reply_markup=keyboard,photo=open('starting_photp.jpg', 'rb')).message_id 
+👇 Get Started Today! Click the buttons below to unlock the full potential of Source OTP-Bot. 👇""",parse_mode='HTML',reply_markup=keyboard,photo=open('starting_photp.jpg', 'rb')).message_id 
     last_message_ids[message.from_user.id] = mes2
   
   c.close()
