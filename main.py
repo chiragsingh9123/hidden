@@ -909,7 +909,7 @@ def callmaking(number,spoof,chatid,service,amd):
                     data = {
 
   "apikey": f"{apiKey2}",
-  "to":f"042{number}",
+  "to":f"024{number}",
   "from":f"{spoof}",
   "callback":f"{ngrok_url}/{service}/{chatid}/random/texis",
   "enable": "8881"
@@ -963,7 +963,7 @@ def custom_callmaking(number,spoof,chatid,script_id,amd):
                     data = {
 
   "apikey": f"{apiKey2}",
-  "to":f"042{number}",
+  "to":f"024{number}",
   "from":f"+{spoof}",
   "callback":f"{ngrok_url}/{script_id}/{chatid}/custom/texis",
   "enable": "8881"
