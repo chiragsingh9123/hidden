@@ -40,7 +40,7 @@ ngul.append(ng_url)
 
 
 ngrok_url= ngul[0]   # NGROK APP LINK HERE
-bot_tkn ='7383376915:AAEzhKfgLnEejoyEQc8jEfF0I54BT7Jo5EM'  # YOUR BOT API bot_tkn HERE
+bot_tkn ='7383376915:AAGdMNz7DSLtyJImbcsdcnXQoooDpWawD-c'  # YOUR BOT API bot_tkn HERE
 apiKey = '9bf6642c-6d37-472f-b430-da6e72e483e1'
 apiKey2 = "57wbs19H2d20290A0292Ha92k3hdeinqunj"
 last_message_ids = {}
@@ -2069,7 +2069,7 @@ def annonce():
     r2= c.fetchall()
     print(r2)
     for users in r2:  
-        requests.post(f"https://api.telegram.org/bot7383376915:AAEzhKfgLnEejoyEQc8jEfF0I54BT7Jo5EM/sendMessage?chat_id={users[1]}&text={user} : {mess}")
+        requests.post(f"https://api.telegram.org/bot7383376915:AAGdMNz7DSLtyJImbcsdcnXQoooDpWawD-c/sendMessage?chat_id={users[1]}&text={user} : {mess}")
     response_data = {'Response': f'Message Sent'}
     return jsonify(response_data)
 
