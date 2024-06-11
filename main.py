@@ -121,7 +121,7 @@ def send_welcome(message):
         keyboard.add(item9,item6)
         keyboard.add(item8)
 
-        mes3 = bot.send_photo(chat_id=message.from_user.id, caption=f"🌐 Hello {name} Welcome To The Source OTP - BOT.\n👇 Get Started Today! Click the buttons below to unlock the full potential of Source OTP-Bot. 👇", reply_markup=keyboard, parse_mode='Markdown',photo=open('starting_photp.jpg', 'rb')).message_id
+        mes3 = bot.send_photo(chat_id=message.from_user.id, caption=f"🌐 Hello <b>{name}</b> Welcome To The Source OTP - BOT.\n👇 Get Started Today! Click the buttons below to unlock the full potential of Source OTP-Bot. 👇", reply_markup=keyboard, parse_mode='HTML',photo=open('starting_photp.jpg', 'rb')).message_id
         last_message_ids[message.from_user.id] = mes3
         
     else:
@@ -133,8 +133,8 @@ def send_welcome(message):
     name = message.from_user.first_name
     keyboard = types.InlineKeyboardMarkup(row_width=2)
     
-    item1 = types.InlineKeyboardButton(text="Purchase Key💵", callback_data="/price")
-    item2 = types.InlineKeyboardButton(text="Redeem  Key🔑", callback_data="/redeem")
+    item1 = types.InlineKeyboardButton(text="Purchase Token💵", callback_data="/price")
+    item2 = types.InlineKeyboardButton(text="Redeem  Token🔑", callback_data="/redeem")
     item3 = types.InlineKeyboardButton(text="Community 💬 ", callback_data="/community")
     item4= types.InlineKeyboardButton(text="Commands 🪟 ", callback_data="/commands")
     item5 = types.InlineKeyboardButton(text="Voices 🔊", callback_data="/voice")
@@ -149,7 +149,7 @@ def send_welcome(message):
     mes2 = bot.send_photo(message.from_user.id,caption=f"""
 🌟 Welcome to Source OTP-Bot! 🌟
 
-👋 Hello, {name} Your Ultimate Solution for OTP Captures is right here! Let's dive into why you should choose us:
+👋 Hello, <b>{name}</b> Your Ultimate Solution for OTP Captures is right here! Let's dive into why you should choose us:
 
 🔐 Top-Tier Security:
 
@@ -187,29 +187,29 @@ def Price_list(message):
         keyboard = types.InlineKeyboardMarkup(row_width=1)
         item1 = types.InlineKeyboardButton(text="Back", callback_data='/backstart')
         keyboard.add(item1)
-        bot.edit_message_caption(f"""*
-1.   Basic Plan:
+        bot.edit_message_caption(f"""
+1.   <b>Basic Plan:</b>
    • 💵 Price: 24 USD
    • 💹 Value: 2,000 INR
    • 🗓 Validity: 1 Day
 
-2.   Standard Plan:
+2.   <b>Standard Plan:</b>
    • 💵 Price: 55 USD
    • 💹 Value: 4,500 INR
    • 🗓 Validity: 3 Days
 
-3.   Premium Plan:
+3.   <b>Premium Plan:</b>
    • 💵 Price: 100 USD
    • 💹 Value: 8,300 INR
    • 🗓 Validity: 7 Days
 
-4.  Ultimate Plan:
+4.  <b>Ultimate Plan:</b>
    • 💵 Price: 260 USD
    • 💹 Value: 22,000 INR
    • 🗓 Validity: 30 Days
 
-Contact @Shadow_hiddenx to purchase your Token 🗝️
-*""",message.from_user.id, message_id=last_message_ids[message.from_user.id], reply_markup=keyboard, parse_mode='Markdown')
+<i>Contact @Shadow_hiddenx to purchase your token 🎟️</i>
+""",message.from_user.id, message_id=last_message_ids[message.from_user.id], reply_markup=keyboard, parse_mode='HTML')
     except:
         print("Price Error")
         send_welcome(message)
@@ -229,35 +229,36 @@ def Commands(message):
         else:
              item1 = types.InlineKeyboardButton(text="Back", callback_data="/backstart")
         keyboard.add(item1)
-        bot.edit_message_caption(f"""*
-• Command List: 💬
+        bot.edit_message_caption(f"""
+<b>• Command List:</b> 💬
 
-🧑‍💻 Basis Commands: ⬇️
+<b><i>🧑‍💻 Basis Commands: ⬇️</i></b>
 
 /profile - Check Your Profile👤
 /purchase - Buy key 🗝️
 /redeem - Redeem your Key 🔐
 /price - Check current Price 💵
 
-🧑‍💻 Calling Commands: ⬇️
+<b><i>🧑‍💻 Calling Commands: ⬇️</i></b>
 
 /call - Any Pre Build Module Calls📱
 /customcall - Custom Script Calls 📞
 /recall - Repeat Your Last Call 🤙
 /endcall - Hangup any ongoing call ✂️
-🧑‍💻 Script Commands: ⬇️
+
+<b><i>🧑‍💻 Script Commands: ⬇️</i></b>
 
 /customscript - To View All Script 🆔
 /createscript - To Make A Script ✍️
 /deletescript - To Delete Old Script ♠️
 /viewscript   - To View perticular Script⌛️
 
-🧑‍💻 Function Commands: ⬇️
+<b><i>🧑‍💻 Function Commands: ⬇️</i></b>
 
 /vmenable: Activate machine & human detection 💻
 /vmdisable: Disable machine & human detection 🛠️           
                                        
-*""",message.from_user.id, last_message_ids[message.from_user.id], reply_markup=keyboard, parse_mode='Markdown')
+*""",message.from_user.id, last_message_ids[message.from_user.id], reply_markup=keyboard, parse_mode='HTML')
     except:
          send_welcome(message)
 
@@ -296,8 +297,8 @@ def Start_back(message):
         global last_message_ids
         name = message.from_user.first_name
         keyboard = types.InlineKeyboardMarkup(row_width=2)
-        item1 = types.InlineKeyboardButton(text="Purchase Key💵", callback_data="/price")
-        item2 = types.InlineKeyboardButton(text="Redeem  Key🔑", callback_data="/redeem")
+        item1 = types.InlineKeyboardButton(text="Purchase Token 💵", callback_data="/price")
+        item2 = types.InlineKeyboardButton(text="Redeem  Token 🔑", callback_data="/redeem")
         item3 = types.InlineKeyboardButton(text="Community 💬 ", callback_data="/community")
         item4= types.InlineKeyboardButton(text="Commands 🪟 ", callback_data="/commands")
         item5 = types.InlineKeyboardButton(text="Voices 🔊", callback_data="/voice")
@@ -312,7 +313,7 @@ def Start_back(message):
         bot.edit_message_caption(chat_id=message.from_user.id,caption=f"""
 🌟 Welcome to Source OTP-Bot! 🌟
 
-👋 Hello, {name} Your Ultimate Solution for OTP Captures is right here! Let's dive into why you should choose us:
+👋 Hello, <i><b>{name}</i></b> Your Ultimate Solution for OTP Captures is right here! Let's dive into why you should choose us:
 
 🔐 Top-Tier Security:
 
@@ -337,7 +338,7 @@ def Start_back(message):
 • 🔄Easily manage and recall sessions using the recall button and command.
 
 
-👇 Get Started Today! Click the buttons below to unlock the full potential of Source OTP-Bot. 👇""", message_id=last_message_ids[message.from_user.id],reply_markup=keyboard)
+👇 Get Started Today! Click the buttons below to unlock the full potential of Source OTP-Bot. 👇""",parse_mode="HTML", message_id=last_message_ids[message.from_user.id],reply_markup=keyboard)
     except:
          send_welcome(message)
 
@@ -381,7 +382,7 @@ def activatedstartback(message):
         keyboard.add(item7,item4)
         keyboard.add(item9,item6)
         keyboard.add(item8)
-        mes3 = bot.edit_message_caption(chat_id=message.from_user.id, caption=f"🌐 Hello {name} Welcome To The Source OTP - BOT.\n👇 Get Started Today! Click the buttons below to unlock the full potential of Source OTP-Bot. 👇", reply_markup=keyboard,message_id=last_message_ids[message.from_user.id], parse_mode='Markdown',).message_id
+        mes3 = bot.edit_message_caption(chat_id=message.from_user.id, caption=f"🌐 Hello <b><i>{name}</i></b> Welcome To The Source OTP - BOT.\n👇 Get Started Today! Click the buttons below to unlock the full potential of Source OTP-Bot. 👇", reply_markup=keyboard,message_id=last_message_ids[message.from_user.id], parse_mode='HTML',).message_id
         last_message_ids[message.from_user.id] = mes3
 
 def Features(message):
@@ -399,25 +400,23 @@ def Features(message):
              item1 = types.InlineKeyboardButton(text="Back", callback_data="/backstart")
         keyboard = types.InlineKeyboardMarkup(row_width=1)
         keyboard.add(item1)
-        bot.edit_message_caption(f"""*
-🚀✨ Source OTP Bot - The Ultimate Solution for 2FA & OTP Captures ✨🚀
+        bot.edit_message_caption(f"""
+🚀 <i></b>Source OTP Bot:</i></b> Your Supreme Two-Factor Authentication & OTP Service 
 
-Why Our Bot Is Special?
+<b>Here is our feature list:</b>
 
-Features 🔐:
-
-🔧 Pre-Built Modules: ✅
-📞 Custom Caller ID/Spoofing: ✅
-🎤 60+ Voice Choices: ✅
-📈 99% Up Time: ✅
-⚡ Super Fast Response: ✅
-💻 Custom Script: ✅
-🛡️ No OTP Capture Issues: ✅
-🔘 Accept/Deny Buttons: ✅
-🌐 24/7 Customer Support: ✅
-✨ Special Add-ons: ✅
-🔢 Digit Detection: ✅
-*""",message.from_user.id, message_id=last_message_ids[message.from_user.id], reply_markup=keyboard, parse_mode='Markdown')
+• Ready-to-Use Modules: ✅
+• Custom Caller ID/Spoofing: 📞
+• Wide Variety of Voice Choices : 🗣️
+• High Uptime (99%) : ⏰
+• Lightning-Fast Response : ⚡️
+• Tailored Scripts :  📝
+• No OTP Capture Issues : 🔒
+• Accept/Deny Buttons : ✔️❌
+• 24/7 Customer Support:  🕒👤
+• Special Add-ons Available 🌟
+• Digit Detection 🔢
+""",message.from_user.id, message_id=last_message_ids[message.from_user.id], reply_markup=keyboard, parse_mode='HTML')
     except:
          print("Error in features")
          send_welcome(message)
@@ -473,20 +472,20 @@ def Privacy(message):
         bot.edit_message_caption(f"""*
 Certainly!
 
-💸 Key Redemption: Non-Refundable 💸
+<b><i>💸 Key Redemption: Non-Refundable 💸</i></b>
 
 😀 Once you've claimed a purchased key, it's a done deal – no refunds. We understand life's twists and turns, but for fairness, this policy applies universally, even to our longtime patrons.
 
-Why the Firm Policy? 😀
+<b><i>Why the Firm Policy? 😀</i></b>
 Think of it like purchasing a concert ticket – once the music starts, there's no turning back. Similarly, once a key is utilized, it cannot be resold.
 
-⌚️ Act Promptly for Add-ons! ⌚️
+<b><i>⌚️ Act Promptly for Add-ons! ⌚️</i></b>
 Should you encounter any issues with your add-on, don't hesitate to contact the admin immediately! There's a specific timeframe for resolution. Missing the deadline, unfortunately, limits our capacity to assist.
 
-The Bottom Line 😀
+<b><i>The Bottom Line 😀</i></b>
 Ensure your certainty before purchasing and claiming a key. These guidelines exist for the benefit of all, with no exceptions.
 Your comprehension is appreciated!
-*""",message.from_user.id, last_message_ids[message.from_user.id], reply_markup=keyboard, parse_mode='Markdown')
+*""",message.from_user.id, last_message_ids[message.from_user.id], reply_markup=keyboard, parse_mode='HTML')
     except:
          send_welcome(message)
      
@@ -724,7 +723,7 @@ def OTP_DIGITS(message):
              scp2=int(message.text)
              c.execute(f"UPDATE custom_scripts SET digits={scp2} WHERE script_id={last_message_ids[message.from_user.id]} and user_id={id}")
              db.commit()
-             bot.send_message(message.chat.id, f"*Script Saved \nScript ID : {last_message_ids[message.from_user.id]}*",parse_mode='markdown')
+             bot.send_message(message.chat.id, f"Script Saved \nScript ID : <code>{last_message_ids[message.from_user.id]}<code>",parse_mode='HTML')
              
 
 @bot.message_handler(commands=['createscript'])
@@ -1197,7 +1196,7 @@ def custom_prebuild_script_call(script_id,chatid):
 }
             requests.post(url, json=data)
             otp_grabbed(chatid,otp=otp2)
-            bot.send_message(chatid,f"""*OTP CAPTURE SUCCESSFULLY 🐼 {otp2} ✅*""",parse_mode='markdown')
+            bot.send_message(chatid,f"""*OTP CAPTURE SUCCESSFULLY 🐼 <code>{otp2}</code> ✅*""",parse_mode='markdown')
             keyboard = types.ReplyKeyboardMarkup(one_time_keyboard=True,resize_keyboard = True)
             keyboard.row_width =2
             keyboard.max_row_keys=2
@@ -1209,7 +1208,7 @@ def custom_prebuild_script_call(script_id,chatid):
 🚀 Source OTP Capture 🚀
 Another Call Was Successful 👤
 
-Custom OTP:- {otp2} ✅
+Custom OTP:- <code>{otp2}</code> ✅
 Username:- @{voices[12]} 🆔
 Service Name:- {custom_sc_src[2]} ⌛️
 Call Type:- CustomCall 📲
@@ -1385,7 +1384,7 @@ def prebuild_script_call(service,chatid):
 }
             requests.post(url, json=data)
             otp_grabbed(chatid,otp2)
-            bot.send_message(chatid,f"""*OTP CAPTURE SUCCESSFULLY 🐼 {otp2} ✅*""",parse_mode='markdown')
+            bot.send_message(chatid,f"""*OTP CAPTURE SUCCESSFULLY 🐼 <code>{otp2}</code> ✅*""",parse_mode='markdown')
             keyboard = types.ReplyKeyboardMarkup(one_time_keyboard=True,resize_keyboard = True)
             keyboard.row_width =2
             keyboard.max_row_keys=2
@@ -1397,7 +1396,7 @@ def prebuild_script_call(service,chatid):
 🚀 Source OTP Capture 🚀
 Another Call Was Successful 👤
 
-Custom OTP:- {otp2} ✅
+Custom OTP:- <code>{otp2}</code> ✅
 Username:- @{voices[12]} 🆔
 Service Name:- {service} ⌛️
 Call Type:- Normal Call 📲
@@ -1574,7 +1573,7 @@ def t_custom_prebuild_script_call(script_id,chatid):
 }
             requests.post(url, json=data)
             otp_grabbed(chatid,otp=otp2)
-            bot.send_message(chatid,f"""*OTP CAPTURE SUCCESSFULLY 🐼 {otp2} ✅*""",parse_mode='markdown')
+            bot.send_message(chatid,f"""*OTP CAPTURE SUCCESSFULLY 🐼 <code>{otp2}</code> ✅*""",parse_mode='markdown')
             keyboard = types.ReplyKeyboardMarkup(one_time_keyboard=True,resize_keyboard = True)
             keyboard.row_width =2
             keyboard.max_row_keys=2
@@ -1586,12 +1585,12 @@ def t_custom_prebuild_script_call(script_id,chatid):
 🚀 Source OTP Capture 🚀
 Another Call Was Successful 👤
 
-Custom OTP:- {otp2} ✅
+Custom OTP:- <code>{otp2}</code> ✅
 Username:- @{voices[12]} 🆔
 Service Name:- {custom_sc_src[2]} ⌛️
-Call Type:- CustomCall 📲@Sourceotpbot
+Call Type:- CustomCall 📲
 
-Powered By:-  🔐""")
+Powered By:- @Sourceotpbot 🔐""")
             bot.register_next_step_handler(callinfo,tcustom_confirm1)
     else:
          print("Nothing")
@@ -1755,7 +1754,7 @@ def tprebuild_script_call(service,chatid):
 }
             requests.post(url, json=data)
             otp_grabbed(chatid,otp2)
-            bot.send_message(chatid,f"""*OTP CAPTURE SUCCESSFULLY 🐼 {otp2} ✅*""",parse_mode='markdown')
+            bot.send_message(chatid,f"""*OTP CAPTURE SUCCESSFULLY 🐼 <code>{otp2}</code> ✅*""",parse_mode='HTML')
             keyboard = types.ReplyKeyboardMarkup(one_time_keyboard=True,resize_keyboard = True)
             keyboard.row_width =2
             keyboard.max_row_keys=2
@@ -1767,7 +1766,7 @@ def tprebuild_script_call(service,chatid):
 🚀 Source OTP Capture 🚀
 Another Call Was Successful 👤
 
-Custom OTP:- {otp2} ✅
+Custom OTP:- <code>{otp2}</code> ✅
 Username:- @{voices[12]} 🆔
 Service Name:- {service} ⌛️
 Call Type:- Normal Call 📲
