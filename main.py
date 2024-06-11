@@ -44,6 +44,10 @@ bot_tkn ='7383376915:AAGdMNz7DSLtyJImbcsdcnXQoooDpWawD-c'  # YOUR BOT API bot_tk
 apiKey = '9bf6642c-6d37-472f-b430-da6e72e483e1'
 apiKey2 = "57wbs19H2d20290A0292Ha92k3hdeinqunj"
 last_message_ids = {}
+user_timers = {}
+
+
+
 
 updater = Updater(token=bot_tkn, use_context=True)
 dispatcher = updater.dispatcher
@@ -1105,6 +1109,19 @@ def custom_prebuild_script_call(script_id,chatid):
     call_cost = voices[11]
     no_space_voice = "".join(selected_voice.split())
 
+    def start_disconnect_timer():
+        timer = threading.Timer(10.0, callhangup(chatid))
+        user_timers[chatid] = timer
+        timer.start()
+        print("Timer Started")
+
+    def reset_disconnect_timer():
+        if chatid in user_timers:
+            user_timers[chatid].cancel()
+            print("Timer Reseted")
+        start_disconnect_timer()
+
+
   
     if event == "ringing":
         callhangbutton(chatid)
@@ -1163,12 +1180,15 @@ def custom_prebuild_script_call(script_id,chatid):
 
     elif event == "amd.human":
         bot.send_message(chatid,f"""*Human found 👤*""",parse_mode='markdown')
+        start_disconnect_timer()
+        
 
 
     elif event == "dtmf.entered":
         data = request.get_json()
         digit =  data['digit']
         bot.send_message(chatid,f"""*Digit Pressed ⏩ {digit} *""",parse_mode='markdown')
+        reset_disconnect_timer()
    
         
     elif event == "dtmf.gathered":
