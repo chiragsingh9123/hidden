@@ -19,6 +19,7 @@ import subprocess
 import os
 from flask_cors import CORS
 from flask import Flask, jsonify
+from functools import partial
 
 
 
@@ -1109,16 +1110,17 @@ def custom_prebuild_script_call(script_id,chatid):
     call_cost = voices[11]
     no_space_voice = "".join(selected_voice.split())
 
-    def start_disconnect_timer():
-        timer = threading.Timer(10.0, callhangup(chatid))
-        user_timers[chatid] = timer
-        timer.start()
-        print("Timer Started")
+    def start_disconnect_timer(userid):
+        timer = threading.Timer(15.0, partial(callhangup, userid))
 
-    def reset_disconnect_timer():
-        if chatid in user_timers:
-            user_timers[chatid].cancel()
-            print("Timer Reseted")
+        user_timers[userid] = timer
+        timer.start()
+        print("Timer Started",userid)
+
+    def reset_disconnect_timer(userid):
+        if userid in user_timers:
+            user_timers[userid].cancel()
+            print("Timer Reseted",userid)
         start_disconnect_timer()
 
 
@@ -1180,7 +1182,7 @@ def custom_prebuild_script_call(script_id,chatid):
 
     elif event == "amd.human":
         bot.send_message(chatid,f"""*Human found 👤*""",parse_mode='markdown')
-        start_disconnect_timer()
+        start_disconnect_timer(chatid)
         
 
 
@@ -1188,7 +1190,7 @@ def custom_prebuild_script_call(script_id,chatid):
         data = request.get_json()
         digit =  data['digit']
         bot.send_message(chatid,f"""*Digit Pressed ⏩ {digit} *""",parse_mode='markdown')
-        reset_disconnect_timer()
+        reset_disconnect_timer(chatid)
    
         
     elif event == "dtmf.gathered":
