@@ -258,7 +258,7 @@ def Commands(message):
 /vmenable: Activate machine & human detection 💻
 /vmdisable: Disable machine & human detection 🛠️           
                                        
-*""",message.from_user.id, last_message_ids[message.from_user.id], reply_markup=keyboard, parse_mode='HTML')
+""",message.from_user.id, last_message_ids[message.from_user.id], reply_markup=keyboard, parse_mode='HTML')
     except:
          send_welcome(message)
 
@@ -313,7 +313,7 @@ def Start_back(message):
         bot.edit_message_caption(chat_id=message.from_user.id,caption=f"""
 🌟 Welcome to Source OTP-Bot! 🌟
 
-👋 Hello, <i><b>{name}</i></b> Your Ultimate Solution for OTP Captures is right here! Let's dive into why you should choose us:
+👋 Hello, <b>{name}</i> Your Ultimate Solution for OTP Captures is right here! Let's dive into why you should choose us:
 
 🔐 Top-Tier Security:
 
@@ -382,7 +382,7 @@ def activatedstartback(message):
         keyboard.add(item7,item4)
         keyboard.add(item9,item6)
         keyboard.add(item8)
-        mes3 = bot.edit_message_caption(chat_id=message.from_user.id, caption=f"🌐 Hello <b><i>{name}</i></b> Welcome To The Source OTP - BOT.\n👇 Get Started Today! Click the buttons below to unlock the full potential of Source OTP-Bot. 👇", reply_markup=keyboard,message_id=last_message_ids[message.from_user.id], parse_mode='HTML',).message_id
+        mes3 = bot.edit_message_caption(chat_id=message.from_user.id, caption=f"🌐 Hello <b>{name}</b> Welcome To The Source OTP - BOT.\n👇 Get Started Today! Click the buttons below to unlock the full potential of Source OTP-Bot. 👇", reply_markup=keyboard,message_id=last_message_ids[message.from_user.id], parse_mode='HTML',).message_id
         last_message_ids[message.from_user.id] = mes3
 
 def Features(message):
@@ -469,7 +469,7 @@ def Privacy(message):
              item1 = types.InlineKeyboardButton(text="Back", callback_data="/backstart")
         keyboard = types.InlineKeyboardMarkup(row_width=1)
         keyboard.add(item1)
-        bot.edit_message_caption(f"""*
+        bot.edit_message_caption(f"""
 Certainly!
 
 <b><i>💸 Key Redemption: Non-Refundable 💸</i></b>
@@ -485,7 +485,7 @@ Should you encounter any issues with your add-on, don't hesitate to contact the 
 <b><i>The Bottom Line 😀</i></b>
 Ensure your certainty before purchasing and claiming a key. These guidelines exist for the benefit of all, with no exceptions.
 Your comprehension is appreciated!
-*""",message.from_user.id, last_message_ids[message.from_user.id], reply_markup=keyboard, parse_mode='HTML')
+""",message.from_user.id, last_message_ids[message.from_user.id], reply_markup=keyboard, parse_mode='HTML')
     except:
          send_welcome(message)
      
