@@ -844,13 +844,16 @@ def callhangupmanual(message):
 }
         requests.post(urlh, json=data)       
     elif apidata[1]==2:
-         urlht =  "http://162.33.178.184:3001/v1/hangup"
-         data = {
+        try:
+            urlht =  "http://162.33.178.184:3001/v1/hangup"
+            data = {
     "uuid": f"{call_control}",
     "apikey":f"{apiKey2}"
 }
-         resp=requests.post(urlht, json=data)
-         print(resp.text)
+            resp=requests.post(urlht, json=data)
+            print(resp.text)
+        except:
+             pass
     c.close()
 
 
