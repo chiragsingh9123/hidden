@@ -832,19 +832,22 @@ def callhangupmanual(message):
     c = db.cursor()
     c.execute(f"Select * from api_key where id=123")
     apidata= c.fetchone()
-    c.execute(f"Select * from call_data where chat_id={message.from_user.id}")
-    custom_cont = c.fetchone()
-    call_control  = custom_cont[1]
+    try:
+        c.execute(f"Select * from call_data where chat_id={message.from_user.id}")
+        custom_cont = c.fetchone()
+        call_control  = custom_cont[1]
+    
 
 
-    if apidata[1]==1:
-        urlh = 'https://ai2api.com/v1/api/hangup'
-        data = {
-    "uuid": f"{call_control}",
+        if apidata[1]==1:
+            urlh = 'https://ai2api.com/v1/api/hangup'
+            data = {
+        "uuid": f"{call_control}",
 }
-        requests.post(urlh, json=data)       
-    elif apidata[1]==2:
-        try:
+            requests.post(urlh, json=data)    
+
+        elif apidata[1]==2:
+      
             urlht =  "http://162.33.178.184:3001/v1/hangup"
             data = {
     "uuid": f"{call_control}",
@@ -852,8 +855,8 @@ def callhangupmanual(message):
 }
             resp=requests.post(urlht, json=data)
             print(resp.text)
-        except:
-             pass
+    except:
+         print("no user present")
     c.close()
 
 
