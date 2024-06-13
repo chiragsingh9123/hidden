@@ -2091,6 +2091,8 @@ def balance():
          current_api = "Mia Api Working"
     elif apidata[1]==2:
          current_api = "Texis Api Working"
+    elif apidata[1]==3:
+         current_api = "Bot down ha bhai"
     url1 = 'http://162.33.178.184:3001/v1/balance'
     data1 = {"apikey": f"{apiKey2}"}
 
