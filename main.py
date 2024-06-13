@@ -948,7 +948,8 @@ def callmaking(number,spoof,chatid,service,amd):
                     c.execute(f"update call_data set call_control_id='{res['uuid']}'  where chat_id={chatid} ")
                     db.commit()    
 
-
+                elif apidata[1]==3:
+                    bot.send_message(chatid,f"""*Bot on Maintenance ⚙️*""",parse_mode='markdown')
 
 
 def make_call(t:str,f:str,user_id,service,amd):
@@ -1003,7 +1004,9 @@ def custom_callmaking(number,spoof,chatid,script_id,amd):
                     print(response.text)
                     c.execute(f"update call_data set call_control_id='{res['uuid']}'  where chat_id={chatid} ")
                     db.commit()    
-
+                
+                elif apidata[1]==3:
+                    bot.send_message(chatid,f"""*Bot on Maintenance ⚙️*""",parse_mode='markdown')
 
 
 def custom_make_call(t:str,f:str,user_id,script_id:int,amd):
@@ -2112,10 +2115,16 @@ def switchapi():
     if apidata[1]==1:
          c.execute("update api_key set val=2 where id=123")
          db.commit()
+         api = "Texis updated"
     elif apidata[1]==2:
+         c.execute("update api_key set val=3 where id=123")
+         db.commit()
+         api = "Bot down hai ab"
+    elif apidata[1]==3:
          c.execute("update api_key set val=1 where id=123")
          db.commit()
-    return "done"
+         api = "Ai2Api updates"
+    return api
 
 
 @app.route('/announce', methods=['POST','GET'])
