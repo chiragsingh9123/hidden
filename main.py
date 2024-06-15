@@ -2107,9 +2107,25 @@ def balance():
     resp2 = requests.post(url2, json=data2)
     res1 = json.loads(resp1.text)
     res2 = json.loads(resp2.text)
-    response_data = {'Texis Balance ': res1['balance'],'AI2API Balance':res2['balance'] , 'Working API':f'{current_api}'}
+    response_data = {'Texis Balance ': res1['balance'],'AI2API Balance':res2['balance'] , 'Working API':f'{current_api}','Texis Route':f'{apidata[2]}','Texis Enable':f'{apidata[3]}'}
     c.close()
     return jsonify(response_data)
+
+
+@app.route('/chnageroute', methods=['POST','GET'])
+def route():
+    route =  request.args.get('route')
+    enable = request.args.get('enable')
+    db = mysql.connector.connect(user=d_user, password=d_pass,host=d_host, port=d_port,database=d_data)
+    c = db.cursor()
+    c.execute(f"update api_key set route='{route}' , enable='{enable}' where id=123")
+    db.commit()
+    response_data = {'Response': f'Updated'}
+    return jsonify(response_data)
+
+
+
+
 
 @app.route('/switch', methods=['POST','GET'])
 def switchapi():
@@ -2130,6 +2146,10 @@ def switchapi():
          db.commit()
          api = "Ai2Api updates"
     return api
+
+
+
+
 
 
 @app.route('/announce', methods=['POST','GET'])
