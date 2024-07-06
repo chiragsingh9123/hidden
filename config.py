@@ -7,8 +7,8 @@ import requests
 import time
 
 d_user ='doadmin'
-d_host ='db-mysql-nyc3-63189-do-user-16074184-0.c.db.ondigitalocean.com'
-d_pass ='AVNS__XpkKv7cE-wgggkbbRy'
+d_host ='db-mysql-blr1-57305-do-user-16074184-0.a.db.ondigitalocean.com'
+d_pass ='AVNS_txpzFyr1HZJW21nTwyM'
 d_port =25060
 d_data='otbbotdatabase'
 
